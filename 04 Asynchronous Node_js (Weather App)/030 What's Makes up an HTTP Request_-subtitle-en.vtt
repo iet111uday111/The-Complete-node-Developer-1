@@ -1,0 +1,604 @@
+WEBVTT
+
+00:00.390 --> 00:07.020
+In the last two videos you learned how to use the request module to make an HTP request for some information.
+
+00:07.020 --> 00:12.870
+In our case you Arel we requested was a Google Maps geocoding you RL and we passed in the address we
+
+00:12.870 --> 00:19.170
+want the latitude and the long to 3:58 then we use a callback function which got fired once that data
+
+00:19.170 --> 00:20.250
+came back.
+
+00:20.250 --> 00:25.740
+Now the goal in that video is not to understand how HTP works or what exactly these arguments error
+
+00:25.740 --> 00:27.250
+response and body are.
+
+00:27.270 --> 00:32.670
+The goal was to come up with a real world example of a callback as opposed to the contrived examples
+
+00:32.820 --> 00:36.100
+that we've been using so far with set time out in our case.
+
+00:36.210 --> 00:41.940
+We had a real callback that got fired once the HTP request came back from the Google servers we were
+
+00:41.940 --> 00:46.940
+able to print the body and we saw exactly what we had over in the web site.
+
+00:46.950 --> 00:49.440
+In this video we're going to dive into those arguments.
+
+00:49.470 --> 00:52.030
+So let's kick things off by taking a look at the body.
+
+00:52.050 --> 00:55.950
+This is the third argument that request passes to the callback.
+
+00:55.960 --> 01:02.520
+And now the body is not something unique to the request module body is part of HTP which stands for
+
+01:02.520 --> 01:06.990
+the hyper text transfer protocol when you make a request to a Web site.
+
+01:06.990 --> 01:12.720
+The data that comes back that is the body of the request and you've actually used the body about a million
+
+01:12.720 --> 01:16.690
+times in your life every single time you request a u r l in the browser.
+
+01:16.800 --> 01:23.190
+What you get rendered inside of the screen that is the body in the case of NPM and s dot com the body
+
+01:23.190 --> 01:28.590
+that comes back is an HTL web page that the browser knows how to render the body could also be some
+
+01:28.590 --> 01:32.810
+Jason information which is the case in our Google API request.
+
+01:32.820 --> 01:36.960
+Either way the body is the core data that comes back from the server.
+
+01:37.050 --> 01:41.700
+In our case the body stores all of the location information we need and we're going to be using that
+
+01:41.700 --> 01:47.880
+to pull out the formatted address the latitude and longitude in just a second before we go ahead and
+
+01:47.880 --> 01:49.070
+dive into the body.
+
+01:49.080 --> 01:51.530
+I want to talk about the response object.
+
+01:51.630 --> 01:54.090
+We can go ahead and look at it by printing it to the screen.
+
+01:54.090 --> 01:57.960
+I'm going to swap out body in the console lock statement for response.
+
+02:00.020 --> 02:05.910
+Then I'm going to save the file and rerun things over inside of the terminal by running node app.
+
+02:06.080 --> 02:10.910
+Yes we're going to get that little delay while we wait for the request to come back and then we get
+
+02:10.910 --> 02:12.960
+a really complex object.
+
+02:13.160 --> 02:18.260
+If you scroll up to the top where we originally made the request you can see the first thing we have
+
+02:18.260 --> 02:23.830
+in the response object is a status code the status code is something that comes back from an age TTP
+
+02:23.840 --> 02:25.460
+request it's part of the response.
+
+02:25.580 --> 02:27.820
+And that tells you exactly how the request went.
+
+02:28.010 --> 02:33.200
+In this case a 200 means everything went great and you're probably familiar with some status codes like
+
+02:33.200 --> 02:39.500
+404 which means the page was not found or 500 which means the server crashed.
+
+02:39.500 --> 02:43.330
+Now there are other body codes we'll be using throughout the course like I mentioned.
+
+02:43.400 --> 02:49.190
+We're going to be making our very own HTP API so you'll become intimately familiar with how to set and
+
+02:49.190 --> 02:54.020
+use status codes for now all we care about is that the status code is at 200.
+
+02:54.020 --> 02:56.780
+That means things went well.
+
+02:56.780 --> 03:02.200
+Next up on the response object we actually have the body repeated because it is part of the response.
+
+03:02.330 --> 03:08.150
+Since it's the most useful piece of information that comes back the request module developers chose
+
+03:08.150 --> 03:09.580
+to make it the third argument.
+
+03:09.680 --> 03:15.380
+Although you could access it using response dot body as you can clearly see here in here we have all
+
+03:15.380 --> 03:20.600
+of the information we've already looked at address components formatted address geometry so on and so
+
+03:20.600 --> 03:27.680
+forth down below body we have something called headers no headers are part of the HTP protocol.
+
+03:27.710 --> 03:32.520
+They are key value pairs as you can see here where the key and the value are both strings.
+
+03:32.600 --> 03:34.190
+They can be sent in their request.
+
+03:34.190 --> 03:40.220
+That's from the node server to the Google API server and in the response from the Google API server
+
+03:40.230 --> 03:41.960
+back into the node server.
+
+03:42.050 --> 03:47.720
+Headers are fantastic because a lot of built in ones like content type the content type is H.T. a model
+
+03:47.720 --> 03:51.040
+for a web site and in our case it's application forward slash.
+
+03:51.050 --> 03:53.900
+Jason we'll talk about header's more in the future.
+
+03:54.050 --> 03:59.930
+Most of these headers are not important to our application and most we're never ever gonna use when
+
+03:59.930 --> 04:03.860
+we go on and create our own API later in the course you'll be setting your own headers.
+
+04:03.980 --> 04:06.800
+So you'll be intimately familiar with how these headers work.
+
+04:06.800 --> 04:08.760
+For now we can ignore them completely.
+
+04:08.900 --> 04:14.150
+All I want you to know is that the headers you see here these are headers set by Google they're headers
+
+04:14.300 --> 04:17.700
+that come back from their servers down below headers.
+
+04:17.720 --> 04:23.210
+We have the request object this store some information about the request that was made here you can
+
+04:23.210 --> 04:30.230
+see the protocol HTP Yes the host that Google API is dot com Web site and all sorts of other things
+
+04:30.230 --> 04:36.230
+like the address parameters the entire you are l everything about the request is stored right here down
+
+04:36.230 --> 04:36.770
+below.
+
+04:36.770 --> 04:42.940
+We also have our own headers and these are headers that were sent from node to the Google API.
+
+04:42.950 --> 04:45.470
+Now you're probably wondering how this even got set.
+
+04:45.560 --> 04:47.120
+Well this Hetter got set.
+
+04:47.210 --> 04:54.170
+When we added Jason true to the options object we told request we want Jason back and request went on
+
+04:54.170 --> 04:58.080
+to tell Google hey we want to accept some Jason data back.
+
+04:58.100 --> 05:03.590
+So if you can work with that format and go ahead and send it back and that's exactly what Google did.
+
+05:03.780 --> 05:06.210
+This is the response object.
+
+05:06.230 --> 05:09.640
+It stores information about the response and about their request.
+
+05:09.800 --> 05:13.360
+Well we're not going to be using most of the things inside of the response argument.
+
+05:13.360 --> 05:15.120
+It is important to know they exist.
+
+05:15.140 --> 05:18.110
+So if you ever need to access them you know where they live.
+
+05:18.200 --> 05:20.380
+We'll be using some of this information throughout the course.
+
+05:20.390 --> 05:24.190
+But as I mentioned most of it is not necessary for the most part.
+
+05:24.230 --> 05:26.050
+We're going to be accessing the body.
+
+05:26.060 --> 05:31.680
+One thing we are going to be using is the thing at the very top that status in our case it was 200.
+
+05:31.700 --> 05:36.220
+This is going to be important when we're making sure that that request was fulfilled successfully.
+
+05:36.470 --> 05:41.480
+If we can't fetch the location if we get an error in the status code we do not want to go on to try
+
+05:41.480 --> 05:46.240
+to affect the weather because obviously we don't have the latitude and longitude information.
+
+05:46.340 --> 05:50.710
+We're not going to worry about the status code errors yet that is going to come up soon.
+
+05:50.720 --> 05:53.900
+For now we can move on to the final thing which is air.
+
+05:54.170 --> 05:59.330
+Now as I just mentioned the status code can reveal that an error occurred but this is going to be an
+
+05:59.330 --> 06:01.100
+error on the Google servers.
+
+06:01.250 --> 06:05.330
+Maybe the Google servers have a syntax error and their program is crashing.
+
+06:05.330 --> 06:08.000
+Maybe the data that you sent is invalid.
+
+06:08.000 --> 06:10.630
+For example you sent an address that doesn't exist.
+
+06:10.640 --> 06:13.750
+Those errors are going to become evident via the status code.
+
+06:15.460 --> 06:21.630
+What the error argument contains is errors related to the process of even making that HTP request.
+
+06:21.640 --> 06:24.110
+For example maybe the domain is wrong.
+
+06:24.250 --> 06:26.620
+If I delete x and the dot with G.
+
+06:26.660 --> 06:30.640
+Oh I get it you are Alabam most likely doesn't exist in this case.
+
+06:30.640 --> 06:36.220
+I'm going to get an error in the air object because node cannot make the HTP request it can't even connect
+
+06:36.220 --> 06:37.330
+it to the server.
+
+06:37.330 --> 06:42.040
+I could also get an error right here if the machine on making the request from does not have access
+
+06:42.040 --> 06:44.950
+to the Internet is going to try to reach out to the Google servers.
+
+06:45.070 --> 06:47.960
+That is going to fail and we're going to get an error.
+
+06:48.010 --> 06:54.160
+Now we can check out the error object by deleting those pieces of text from the U R L and making a request.
+
+06:54.310 --> 06:58.380
+In this case I'm going to swap out response for error.
+
+06:58.690 --> 06:59.560
+Awesome.
+
+06:59.620 --> 07:02.530
+Now over inside of the terminal I can scroll to the bottom.
+
+07:02.620 --> 07:05.790
+Rerun the application by running node app.
+
+07:05.860 --> 07:10.840
+Yes and we can see exactly what we get back when I make the bad request.
+
+07:10.850 --> 07:16.110
+We get our air object printing to the screen and the thing we really care about is the error code.
+
+07:16.190 --> 07:18.990
+In this case we have the e not found error.
+
+07:19.040 --> 07:25.130
+And this means that our local machine could not connect to the host provided in this case map.
+
+07:25.160 --> 07:27.950
+Google's API a dot com it doesn't exist.
+
+07:27.950 --> 07:30.180
+So we're getting an error rate here.
+
+07:30.230 --> 07:34.730
+These are going to be those systems as I talked about things like your program not being able to connect
+
+07:34.730 --> 07:37.760
+to the Internet or the domain not being found.
+
+07:37.760 --> 07:43.640
+This is also going to be really important when it comes to creating some error handling for our application.
+
+07:43.640 --> 07:47.360
+There is a chance that the user's machine won't be connected to the Internet and we're going to want
+
+07:47.360 --> 07:52.670
+to make sure to take the appropriate actions and we'll do that depending on what is inside of the air
+
+07:52.760 --> 07:53.510
+object.
+
+07:53.510 --> 07:59.960
+For now though we can fix the U R L setting it back to maps dot Google API I's dot com.
+
+07:59.990 --> 08:06.320
+Now if we make the exact same request by using the up error key and the Enter key the request error
+
+08:06.350 --> 08:08.030
+object it's going to be empty.
+
+08:08.030 --> 08:10.710
+Here you can see no prints to the screen.
+
+08:10.820 --> 08:12.500
+In this case everything went great.
+
+08:12.500 --> 08:13.540
+There was no error.
+
+08:13.580 --> 08:19.430
+It was able to successfully fetch the data which it should because we have a valid u r l that is a quick
+
+08:19.430 --> 08:23.110
+rundown of the body the response and the error argument.
+
+08:23.180 --> 08:26.540
+We are going to be using them in more detail as we add error handling.
+
+08:26.540 --> 08:30.050
+I wanted to give you a quick overview of exactly what is inside of each.
+
+08:30.130 --> 08:33.860
+To wrap this video up we're going to print some data from the body to the screen.
+
+08:33.860 --> 08:38.630
+I'm going to get started by printing the formatted address and you are going to be responsible for printing
+
+08:38.810 --> 08:41.440
+both the latitude and longitude
+
+08:44.120 --> 08:49.250
+in order to figure out exactly where formatted address is I'm going to go to the browser and use Jason
+
+08:49.280 --> 08:55.190
+view one of the reasons I love Jason view as it makes it easy to see where inside of the response that
+
+08:55.190 --> 08:59.930
+data you have highlighted lives at the bottom you can see that little blue bar shows up when I highlight
+
+08:59.930 --> 09:03.740
+over items and it changes as I switch items for formatted address.
+
+09:03.740 --> 09:08.060
+For example we access the results property result is an array.
+
+09:08.180 --> 09:11.000
+In the case of most addresses you're only going to get one result.
+
+09:11.000 --> 09:13.190
+We're going to use the first result every time.
+
+09:13.250 --> 09:14.790
+So we have the index of 0.
+
+09:14.900 --> 09:20.270
+Then it's the dot formatted on your score address property that does exactly what we need to type over
+
+09:20.270 --> 09:23.690
+inside of our node code back inside of atom.
+
+09:23.780 --> 09:30.320
+I'm going to delete this line and replace it with a new console log statement console dock log and I'm
+
+09:30.320 --> 09:33.940
+going to use template strings to add some nice formatting to this.
+
+09:33.980 --> 09:38.030
+I'm going to say address with a colon and a space.
+
+09:38.040 --> 09:42.040
+Then I'm going to inject the address using the dollar sign on the curly braces.
+
+09:42.180 --> 09:46.610
+We're going to access the body then we're going to access results.
+
+09:46.980 --> 09:54.570
+Then we're going to access the first item in the results array followed by formatted address dot formatted
+
+09:54.840 --> 09:56.860
+underscore address.
+
+09:57.000 --> 10:02.480
+With this in place I can now add a semi-colon at the end and save the file over inside of the terminal.
+
+10:02.490 --> 10:09.450
+I can rerun the application and this time around we get our address printing to the screen 3 0 1 Lombard
+
+10:09.450 --> 10:14.300
+Street Philadelphia P.A. 1 9 1 4 7 in the US.
+
+10:14.700 --> 10:19.650
+Now that we have the address printed to the screen what I would like you to do is print both the latitude
+
+10:19.680 --> 10:21.210
+and longitude.
+
+10:21.210 --> 10:23.110
+Now there are a few variations of that.
+
+10:23.160 --> 10:26.050
+There's the bounds the northeast and the Southwest bounds.
+
+10:26.130 --> 10:27.350
+We don't care about that.
+
+10:27.360 --> 10:31.710
+What we want is this location property is latitude and longitude.
+
+10:31.800 --> 10:34.100
+That means you're going to go into geometry.
+
+10:34.180 --> 10:39.570
+You're going to go into location and you're going to grab those two props used to console dialogue statements
+
+10:39.600 --> 10:43.690
+one for latitude and one for long tattoo'd printing both to the screen.
+
+10:43.770 --> 10:44.400
+When you're done.
+
+10:44.550 --> 10:47.020
+Go ahead and rerun the app from the terminal.
+
+10:47.100 --> 10:52.140
+Make sure you see the formatted address and make sure you get the right latitude and longitude printing
+
+10:52.140 --> 10:53.000
+to the terminal.
+
+10:53.040 --> 10:57.060
+If you do then you are done the challenge and you can go ahead and click play.
+
+10:57.090 --> 10:58.530
+Take a moment pause the video.
+
+10:58.540 --> 11:00.150
+Knock that one out and click play.
+
+11:02.860 --> 11:03.790
+How'd you do.
+
+11:03.790 --> 11:09.220
+Hopefully you were able to print both the latitude and longitude to the screen in order to get started
+
+11:09.370 --> 11:11.150
+over inside of Adam.
+
+11:11.170 --> 11:16.750
+I'm going to add another console log line right below console log.
+
+11:16.870 --> 11:20.760
+And I'm going to use template strings once again to add some nice formatting.
+
+11:20.890 --> 11:27.910
+Let's print the latitude first latitude followed by a colon then I can inject my variable using the
+
+11:27.910 --> 11:29.680
+dollar sign with the curly braces.
+
+11:29.740 --> 11:32.860
+And in this case the variable we want is on the body.
+
+11:32.920 --> 11:37.420
+It's also in that first results item results at the index of zero.
+
+11:37.630 --> 11:40.150
+This time we're not going to be going into formatted addresses.
+
+11:40.180 --> 11:48.050
+We're going to be going into geometry from geometry we're going to grab the location prop it in there
+
+11:48.050 --> 11:50.770
+is the latitude dot laughed.
+
+11:50.900 --> 11:51.850
+Awesome.
+
+11:51.860 --> 11:56.690
+Now that we have this in place we can do the exact same thing for long and I'm going to add another
+
+11:56.810 --> 12:01.060
+console log line right below console that log.
+
+12:01.250 --> 12:08.010
+I'm going to use template strings once again typing long into first.
+
+12:08.110 --> 12:13.180
+After that we're going to put a colon and then we'll inject the value in this case the value was on
+
+12:13.180 --> 12:14.260
+the body.
+
+12:14.260 --> 12:16.110
+It's in that same results item.
+
+12:16.120 --> 12:23.060
+The first one we're going to go into geometry location again instead of last.
+
+12:23.080 --> 12:29.160
+We're going to access dot LNG then we can go ahead and get a semi-colon at the end and save the file.
+
+12:29.200 --> 12:31.140
+Now that we're done updating the opt out.
+
+12:31.160 --> 12:35.300
+Yes part of the challenge we can finish up by testing it from the terminal.
+
+12:35.410 --> 12:41.470
+I'm going to rerun the previous command and right here you can see we have the latitude thirty nine
+
+12:41.470 --> 12:42.570
+point nine four.
+
+12:42.640 --> 12:47.930
+And the long itude minus seventy five point one six printing to the screen.
+
+12:48.040 --> 12:53.710
+And these are the exact same values we have over inside of the Chrome browser thirty nine nine for minus
+
+12:53.830 --> 12:55.420
+75 16.
+
+12:55.840 --> 13:01.270
+With this in place we've now successfully pulled off the data we need to make that request to the weather
+
+13:01.270 --> 13:03.090
+API in the next video.
+
+13:03.160 --> 13:07.330
+We're going to go ahead and add some error handling to this callback because that's going to be really
+
+13:07.330 --> 13:09.880
+important for our age to requests.
+
+13:09.900 --> 13:14.140
+There's a chance that things go wrong and when they do inside of the callback we're going to want to
+
+13:14.140 --> 13:17.910
+handle that error by printing a nice error message to the screen.
+
+13:17.920 --> 13:18.790
+So stay tuned.
+
+13:18.790 --> 13:21.910
+I am super excited to continue building the weather application.
+
+13:21.910 --> 13:23.550
+I will see you next time.

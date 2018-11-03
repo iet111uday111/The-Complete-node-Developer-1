@@ -1,0 +1,700 @@
+WEBVTT
+
+00:00.910 --> 00:05.950
+In this video you are finally going to learn some node J.S. code and we're going to kick things off
+
+00:05.950 --> 00:09.110
+by talking about modules inside of Node.
+
+00:09.510 --> 00:12.730
+Now modules are units of functionality.
+
+00:12.730 --> 00:18.730
+So imagine I create a few functions that do something similar like a few functions that help with math
+
+00:18.760 --> 00:22.000
+problems things like add subtract and divide.
+
+00:22.120 --> 00:28.300
+I could bundle those up as a module call it Andrew hyphen math and other people could take advantage
+
+00:28.300 --> 00:29.040
+of it.
+
+00:29.290 --> 00:33.130
+Well we're going to be looking at in this video is not how to make our own module we are going to be
+
+00:33.130 --> 00:39.820
+looking at how we can use modules and that is going to get done using a function in node called require
+
+00:40.240 --> 00:42.640
+require is going to let us do three things.
+
+00:42.730 --> 00:47.660
+First it's going to let us load in modules that come bundled with no J.S..
+
+00:47.800 --> 00:54.370
+These are things like the TTP module which lets us make a web server and the FS module which lets us
+
+00:54.400 --> 00:58.010
+access the file system for our machine.
+
+00:58.120 --> 01:04.000
+We are also going to be using require in later videos to load in third party libraries things like Express
+
+01:04.000 --> 01:08.130
+and sequel eyes which are going to let us write less code.
+
+01:08.150 --> 01:13.480
+We're going to be able to use pre-written libraries to handle complex problems and all we need to do
+
+01:13.480 --> 01:15.890
+is implemented by calling a few methods.
+
+01:15.940 --> 01:20.500
+And lastly we are going to use require to require our very own files.
+
+01:20.530 --> 01:25.780
+It's going to let us break up our application into multiple smaller files which is essential for building
+
+01:25.810 --> 01:27.100
+real world apps.
+
+01:27.160 --> 01:33.760
+If you have all of your code in one file it is going to be really hard to test maintain and update never
+
+01:33.790 --> 01:35.270
+require isn't that bad.
+
+01:35.290 --> 01:38.940
+What we're going to be doing in this video is exploring that first use case.
+
+01:39.050 --> 01:41.810
+We're going to take a look at two built in modules.
+
+01:41.920 --> 01:45.910
+We're going to figure out how to require them and how to use them and then we're going to move on to
+
+01:45.910 --> 01:49.670
+starting the process of building that note application.
+
+01:49.900 --> 01:54.100
+The first step we're going to take inside of the terminal is we're going to make a directory to store
+
+01:54.100 --> 01:55.780
+all of these files.
+
+01:55.870 --> 02:01.840
+I'm going to navigate from my home directory to the desktop using CD desktop then we're going to go
+
+02:01.840 --> 02:06.550
+ahead and make a folder to store all of the lesson files for this project.
+
+02:06.730 --> 02:11.780
+And now these lesson files are going to be available in the resources section for every video.
+
+02:11.800 --> 02:17.260
+So if you get stuck or your code just isn't working for some reason you can download the lesson files
+
+02:17.320 --> 02:21.990
+compare your files and figure out where things went wrong.
+
+02:22.000 --> 02:26.790
+Now we're going to make that folder using M-K Diyar which is short for make a directory.
+
+02:27.100 --> 02:32.380
+And let's go ahead and call the folder notes node or whatever you like.
+
+02:32.470 --> 02:36.600
+We're going to be making a note app in node so notes node seems appropriate.
+
+02:37.870 --> 02:44.580
+Then we'll see into nodes node and we can get started playing around with some of the built in modules.
+
+02:44.620 --> 02:46.150
+Now these modules are built in.
+
+02:46.180 --> 02:49.200
+So there's no need to install anything in the terminal.
+
+02:49.270 --> 02:53.810
+We can simply require them right inside of our node files.
+
+02:53.890 --> 03:00.320
+The next step in the process is going to be to open up at your rectory inside of Adam I'm going to open
+
+03:00.320 --> 03:04.730
+up that directory we just created on the desktop and there it is.
+
+03:04.820 --> 03:08.040
+We have notes node sitting right here.
+
+03:08.130 --> 03:12.560
+Now we are going to need to make a file and I'm going to put that file in the root of the project.
+
+03:12.560 --> 03:13.860
+It's going to be called app dot.
+
+03:13.930 --> 03:14.230
+Yes.
+
+03:14.240 --> 03:16.870
+And this is where our application is going to start.
+
+03:16.940 --> 03:21.320
+We will be writing other files that get used throughout the app but this is the only file we're ever
+
+03:21.320 --> 03:22.760
+going to be running from the terminal.
+
+03:22.760 --> 03:27.560
+This is the initialization file for our application now to keep things off.
+
+03:27.560 --> 03:34.070
+The first thing I want to do is use console dot log to print starting app.
+
+03:34.070 --> 03:39.230
+The only reason we're going to do this is to keep track of how our files are executing and we're only
+
+03:39.230 --> 03:42.260
+going to do this for the first project down the line.
+
+03:42.290 --> 03:47.270
+Once you're comfortable with how files get loaded and how they run we'll be able to remove the console
+
+03:47.270 --> 03:49.940
+log statements and they aren't necessary.
+
+03:50.060 --> 03:56.660
+Now after we call cancel that log starting app the next thing we're going to do is load in a built in
+
+03:56.660 --> 04:03.170
+module using require and we can get a complete list of all of the built in modules on the node.
+
+04:03.200 --> 04:09.370
+J.S. API docs to view that had to your browser go to node.
+
+04:09.380 --> 04:14.880
+J.S. dot org forward slash API.
+
+04:15.020 --> 04:19.950
+When you go to this you are Alan you're going to be greeted with a long list of built in modules what
+
+04:19.970 --> 04:26.330
+we're going to be doing is using the file system module to create a new file and the O S module the
+
+04:26.330 --> 04:32.840
+OS module is going to let us fetch things like the user name for the currently logged in user to get
+
+04:32.840 --> 04:36.110
+things off though we will start with the file system module.
+
+04:36.170 --> 04:40.770
+We're going to go through the process of creating a file and appending to it.
+
+04:40.790 --> 04:46.250
+Now when you view a dock's page for a built in module whether it's the file system one or a different
+
+04:46.250 --> 04:51.320
+module you're going to see a long list of all the different functions properties that you have available
+
+04:51.320 --> 04:52.090
+to you.
+
+04:52.130 --> 04:57.490
+The one we're going to be using in this video is EF-S append file.
+
+04:57.710 --> 05:01.700
+If you click it it'll take you to the specific documentation end of this.
+
+05:01.730 --> 05:05.800
+This is where we can go ahead and figure out how to use a pen file.
+
+05:06.020 --> 05:07.950
+Now a pen file is pretty simple.
+
+05:07.970 --> 05:10.310
+We're going to pass it to string arguments.
+
+05:10.310 --> 05:16.730
+One is going to be the file name and two is going to be the data we want to append to the file that
+
+05:16.730 --> 05:24.260
+is all we need to provide in order to call FS append 5 before we can call EF-S data pen file.
+
+05:24.260 --> 05:25.630
+We need to require it.
+
+05:25.670 --> 05:29.520
+The whole point of require is to let us load in other modules.
+
+05:29.540 --> 05:34.030
+In this case we're going to load in the FS module from app dot jazz.
+
+05:34.120 --> 05:39.220
+Let's go ahead and create a variable that's going to be a constant using Konst since we're not going
+
+05:39.220 --> 05:40.780
+to be manipulating the code.
+
+05:40.780 --> 05:42.220
+The module sends back.
+
+05:42.250 --> 05:44.210
+There's no need to use the VAR keyword.
+
+05:44.290 --> 05:45.980
+We'll use the Konst keyword.
+
+05:47.450 --> 05:54.050
+Then we're going to give it a name like f s and we're going to set it equal to require require is a
+
+05:54.050 --> 05:58.800
+function that's available to you inside of any of your node J.S. files.
+
+05:58.820 --> 06:04.400
+You don't have to do anything special to call it you simply call it like this inside of the arguments
+
+06:04.400 --> 06:05.000
+list.
+
+06:05.000 --> 06:07.050
+We're just going to pass one now.
+
+06:07.070 --> 06:12.140
+Every time you call require whether you're loading a built in module a third party module or your own
+
+06:12.140 --> 06:12.710
+file.
+
+06:12.770 --> 06:15.030
+You just pass in one string.
+
+06:15.260 --> 06:21.530
+And this case will pass in the module name which is fast and will toss a semi-colon at the end.
+
+06:21.530 --> 06:26.870
+This is going to tell Noad you want to fetch all of the contents of the FS module and store them in
+
+06:26.870 --> 06:28.610
+the F as a variable.
+
+06:28.670 --> 06:34.040
+At this point we now have access to all of the functions available on the FS module which we explored
+
+06:34.040 --> 06:38.430
+over in the docs including FS data pen file back in atom.
+
+06:38.540 --> 06:47.120
+We can call upon file by calling FS dot append a file passing in the two arguments that we're going
+
+06:47.120 --> 06:47.940
+to use.
+
+06:48.110 --> 06:50.180
+The first one is going to be the file name.
+
+06:50.420 --> 06:52.140
+Let's go ahead and put in.
+
+06:52.150 --> 06:55.570
+Greetings itx T.
+
+06:55.760 --> 06:59.740
+And the second one is going to be the text you want to append to the file.
+
+06:59.900 --> 07:01.540
+In this case we're going to append.
+
+07:01.670 --> 07:03.140
+Hello world.
+
+07:04.130 --> 07:04.840
+Awesome.
+
+07:05.210 --> 07:10.310
+Let's go ahead and save the file like this and run it from the terminal to see what happens if you're
+
+07:10.310 --> 07:12.040
+running node v 7 or greater.
+
+07:12.050 --> 07:16.130
+You're going to get a little warning when you run the program inside of the terminal.
+
+07:16.160 --> 07:18.980
+Now on v 7 it's still going to work it's just a warning.
+
+07:18.980 --> 07:20.460
+This is how you can get rid of it.
+
+07:20.600 --> 07:24.200
+Above we have the original line as we have inside of our program.
+
+07:24.200 --> 07:28.590
+Option 1 is adding a callback as the third argument to append file.
+
+07:28.640 --> 07:34.340
+This callback is going to get executed when either an error occurs or the file successfully gets written
+
+07:34.370 --> 07:36.870
+to inside of here we have an if statement.
+
+07:36.890 --> 07:39.880
+If there is an error we simply print a message to the screen.
+
+07:39.950 --> 07:42.140
+Unable to write to file.
+
+07:42.140 --> 07:49.280
+Now our second option down below option 2 is to call append file sync append file sync is a synchronous
+
+07:49.280 --> 07:49.670
+method.
+
+07:49.670 --> 07:51.710
+We'll talk more about that later.
+
+07:51.710 --> 07:54.980
+This function does not take the third argument.
+
+07:55.070 --> 07:58.150
+You can type it just like this and you won't get the warning.
+
+07:58.250 --> 08:01.820
+So go ahead and pick one of those two options if you are seeing the warning.
+
+08:01.820 --> 08:04.280
+Both are going to work much the same.
+
+08:04.280 --> 08:07.340
+If you are on V-6 you can stick with the line up above.
+
+08:07.340 --> 08:12.190
+Although you might as well use one of the two down below to make your code a little more future proof.
+
+08:12.180 --> 08:16.850
+Fear not we're going to be talking about asynchronous and synchronous functions as well as callback
+
+08:16.850 --> 08:19.780
+functions extensively throughout the course.
+
+08:19.790 --> 08:24.980
+What I'm giving you here is just a template something you can write in your file to get that error removed
+
+08:25.220 --> 08:26.330
+in a few sections.
+
+08:26.330 --> 08:30.460
+You understand exactly what these two methods are and how they work.
+
+08:30.560 --> 08:33.000
+All right let's go ahead and dive back in.
+
+08:35.030 --> 08:40.810
+If we do this over inside of the terminal node apt.
+
+08:40.860 --> 08:44.680
+J.S. we're going to see something pretty cool right here.
+
+08:44.690 --> 08:49.770
+We get our one council out lock statement starting out so we know the app started correctly and head
+
+08:49.820 --> 08:50.730
+over into atom.
+
+08:50.750 --> 08:54.740
+We actually see there's a brand new Greetings ts t file.
+
+08:54.800 --> 08:59.290
+This is the text file that was created by EF-S data pen file.
+
+08:59.330 --> 09:02.090
+It tries to append it to a file if the file doesn't exist.
+
+09:02.090 --> 09:03.540
+It simply creates it.
+
+09:03.710 --> 09:05.400
+Right here we have our message.
+
+09:05.420 --> 09:06.280
+Hello world.
+
+09:06.290 --> 09:07.820
+Printing to the screen.
+
+09:07.820 --> 09:09.340
+And this is fantastic.
+
+09:09.350 --> 09:15.230
+In just minutes we were able to load in a built in node module and call a function that lets us create
+
+09:15.410 --> 09:22.950
+a brand new file and if we call it again by rerunning the command using the up key and the enter key
+
+09:23.790 --> 09:29.120
+and we head back into the contents of greetings that t you can see this time around we have hello world
+
+09:29.160 --> 09:29.920
+twice.
+
+09:30.020 --> 09:34.260
+Independent at one time for each time we ran the program.
+
+09:34.260 --> 09:35.510
+Now this is pretty cool.
+
+09:35.520 --> 09:41.250
+We have a application that creates a brand new file on our file system and if the file already exists
+
+09:41.280 --> 09:43.100
+it simply adds to it.
+
+09:43.110 --> 09:47.780
+What I'd like to do though is customize this greeting and to do that we're going to explore one more
+
+09:47.790 --> 09:49.290
+built in module.
+
+09:49.290 --> 09:52.660
+Now we're going to be using more than just a pen file in the future.
+
+09:52.740 --> 09:54.090
+We'll be exploring other methods.
+
+09:54.090 --> 10:00.600
+For now the real goal is to understand require require let's us load in the modules functionality so
+
+10:00.600 --> 10:01.980
+we can call it down below.
+
+10:03.010 --> 10:09.010
+The second module that we're going to be using is OS and we can view it over in the documentation down
+
+10:09.010 --> 10:10.090
+on the left hand side.
+
+10:10.180 --> 10:16.430
+We're looking for the OS module and on the OS module we're going to be using the method defined at the
+
+10:16.430 --> 10:23.450
+very bottom user info user info gets called and returns some various information about the currently
+
+10:23.450 --> 10:26.400
+logged in user such as the user name.
+
+10:26.450 --> 10:31.140
+And this is what we're going to pull off using the user name that comes from the OS.
+
+10:31.190 --> 10:34.170
+We're going to be able to customize that greeting instead of hello world.
+
+10:34.250 --> 10:35.330
+It can say hello.
+
+10:35.330 --> 10:40.480
+In this case Andrew to get started we have to require OS.
+
+10:40.520 --> 10:47.490
+That means back inside of Adam just below where I create my f s constant.
+
+10:47.490 --> 10:55.790
+I'm going to create a new constant called OS setting and equal to require which gets called as a function
+
+10:56.180 --> 10:57.580
+and gets passed one argument.
+
+10:57.590 --> 10:59.010
+The module name.
+
+10:59.150 --> 11:06.670
+Oh yes from here we can go ahead and start calling methods available on the os module like user info.
+
+11:08.260 --> 11:12.220
+Let's make a new variable called user to store the result.
+
+11:13.300 --> 11:22.130
+The variable user is going to get set equal to OS dot user info and we can call user info without any
+
+11:22.130 --> 11:23.320
+arguments.
+
+11:23.330 --> 11:28.790
+Now before we go ahead and do anything with it the append file line I'm going to comment it out and
+
+11:28.790 --> 11:33.060
+print out the contents of the User variable using Konsole that Lague.
+
+11:33.170 --> 11:39.260
+This is going to let us explore exactly what we get back over in the terminal we can rerun our program
+
+11:39.410 --> 11:44.150
+using up and enter and right here and you see we have an object with a few properties.
+
+11:44.150 --> 11:51.080
+We have a new ID G ID user name home directory and shell depending on your OS you're not going to have
+
+11:51.080 --> 11:54.690
+all of these but you should always have the user name property.
+
+11:54.710 --> 11:57.120
+This is the one we care about.
+
+11:57.160 --> 12:03.920
+That means back inside of atom we can use user dot username inside of a pen file.
+
+12:04.090 --> 12:09.980
+I'm going to go ahead and remove the console lock statement and uncomment are called to FS data append
+
+12:10.000 --> 12:12.510
+file right here where we have world.
+
+12:12.520 --> 12:16.210
+We're going to be swapping that out with user dot username.
+
+12:16.210 --> 12:17.900
+Now there's two ways we can do this.
+
+12:17.920 --> 12:25.420
+The first way is to remove world with the exclamation mark and concatenate user dot username.
+
+12:25.600 --> 12:29.110
+Then we can concatenate a nother string using the plus operator.
+
+12:29.320 --> 12:30.880
+That's just the exclamation mark.
+
+12:31.060 --> 12:34.670
+And if we run this everything is going to work as expected over in the terminal.
+
+12:34.720 --> 12:42.010
+We can rerun our app it prints starting app and over in a Greetings anti-X he should see something like
+
+12:42.010 --> 12:43.540
+this right here I have.
+
+12:43.540 --> 12:44.440
+Hello Andrew.
+
+12:44.440 --> 12:47.040
+Printing to the screen and this is brilliant.
+
+12:47.140 --> 12:54.160
+Using the s module end of the O S module we were able to grab the user's username and create a new file
+
+12:54.160 --> 12:56.920
+storing it right here inside of app.
+
+12:56.920 --> 13:02.950
+We can also do this another way using an E.S. six feature known as template strings template strings
+
+13:03.220 --> 13:08.920
+start and end with the tick operator which is available to the left of the one key on your keyboard.
+
+13:09.070 --> 13:11.360
+Then you type things like you normally would.
+
+13:11.740 --> 13:17.020
+We're going to type hello space with the exclamation mark and right here is where we want to put the
+
+13:17.020 --> 13:22.480
+name to insert a javascript variable inside of your template string.
+
+13:22.480 --> 13:27.760
+You use the dollar sign followed by an opening and closing curly braces and right here you can see the
+
+13:27.760 --> 13:30.750
+Adam editor actually picks up on this syntax.
+
+13:30.970 --> 13:35.580
+Then we just reference a variable like user dot username.
+
+13:35.650 --> 13:37.810
+This is all it takes to use template strings.
+
+13:37.810 --> 13:42.190
+It's an easy six feature available because you're using node these six.
+
+13:42.310 --> 13:44.890
+It's super useful for things like this.
+
+13:44.890 --> 13:50.770
+This syntax is much easier to understand and update than the string concatenation version we just had.
+
+13:50.770 --> 13:54.150
+And if you run it it's going to produce the exact same output.
+
+13:54.190 --> 13:55.050
+We can run it.
+
+13:55.210 --> 13:57.510
+View the text file and this time around we have.
+
+13:57.510 --> 13:59.990
+Hello Andrew twice which is brilliant.
+
+14:00.220 --> 14:03.750
+With this in place we are now done with our very basic example.
+
+14:04.090 --> 14:07.020
+Let's take a quick moment to recap what we learned.
+
+14:07.030 --> 14:11.230
+First up we learned that we can use require it to load in modules.
+
+14:11.230 --> 14:16.720
+This lets us take existing functionality written by either the no developers or a third party library
+
+14:16.910 --> 14:23.080
+ourselves and loaded into a file so we can be reusable creating reusable code as essential for building
+
+14:23.080 --> 14:24.180
+large apps.
+
+14:24.250 --> 14:29.230
+If you have to build everything in an app every time no one would ever get anything done because they
+
+14:29.230 --> 14:33.510
+would get stuck at building the basics things like HTP servers and web servers.
+
+14:33.550 --> 14:38.920
+There's already modules for that stuff and we're going to be taking advantage of the great and PMA community
+
+14:39.430 --> 14:42.930
+in this case we used to built in modules f FS and Os.
+
+14:43.000 --> 14:48.760
+We loaded them in and using require and we stored in the module results inside of two variables.
+
+14:48.760 --> 14:54.790
+These variables store everything available to us from the module in the case of F as we used the append
+
+14:54.820 --> 14:55.950
+file method.
+
+14:56.050 --> 15:02.810
+And in the case of OS we use the user info method together we were able to grab the user name and save
+
+15:02.810 --> 15:05.440
+it into a file which is fantastic.
+
+15:05.530 --> 15:10.990
+With this in place we're not ready to start creating our own files for our notes application and requiring
+
+15:10.990 --> 15:12.370
+them inside of app.
+
+15:12.390 --> 15:13.090
+Jay asked.
+
+15:13.210 --> 15:17.090
+And that is exactly what you are going to learn how to do in the next video.
+
+15:17.110 --> 15:19.710
+I am super excited to show you how.
+
+15:19.720 --> 15:20.800
+So stay tuned.
+
+15:20.810 --> 15:22.600
+I will see you next time.

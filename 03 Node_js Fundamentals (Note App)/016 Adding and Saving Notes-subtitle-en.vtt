@@ -1,0 +1,628 @@
+WEBVTT
+
+00:00.750 --> 00:05.170
+In the last video you learn how to work with Jason inside of no genius.
+
+00:05.170 --> 00:09.820
+And as we know this is the exact format we're going to be using for the notes application.
+
+00:10.030 --> 00:13.410
+When you first run a command will load in all the notes that might already exist.
+
+00:13.480 --> 00:16.940
+Then we'll run the command whether it's adding removing or reading notes.
+
+00:17.020 --> 00:22.210
+And finally if we've updated the array like we will when we add and remove notes we're going to save
+
+00:22.210 --> 00:25.780
+that new notes back into the Jason File.
+
+00:25.780 --> 00:27.690
+Now this is all going to happen inside of ADD.
+
+00:27.700 --> 00:29.890
+Note the function we define in notes.
+
+00:30.030 --> 00:30.600
+Yes.
+
+00:30.730 --> 00:37.300
+And we already wired up this function in the past we ran the app ad command and this function executed
+
+00:37.300 --> 00:39.560
+with the title and body arguments.
+
+00:39.670 --> 00:43.750
+Since we already have that wired up I'm going to go ahead and remove the Consul that log statement and
+
+00:43.750 --> 00:50.470
+we can start filling this one out to get started the first thing I want to do is create a variable called
+
+00:50.470 --> 00:55.390
+the notes and for the moment we're going to set it equal to an empty array just like this using our
+
+00:55.390 --> 01:01.450
+square brackets now that we have the empty array we can go ahead and make a variable called note which
+
+01:01.450 --> 01:02.540
+is the individual name.
+
+01:02.560 --> 01:09.060
+This is going to represent the new notes on that note we're going to have the two properties you probably
+
+01:09.060 --> 01:15.660
+already expected a title and a body now a title can get set equal to the title variable but as we know
+
+01:15.690 --> 01:23.610
+inside of six we can simply remove it when both values on the same title and body right here.
+
+01:23.760 --> 01:26.280
+Now we have the know and we have the notes array.
+
+01:26.280 --> 01:32.700
+The next step in the process is going to be to add the note to the notes array notes dot.
+
+01:32.770 --> 01:35.260
+Push is going to let us do just that.
+
+01:35.430 --> 01:39.870
+The push method on an array lets you pass in an item which gets added to the end of the array.
+
+01:39.900 --> 01:42.960
+And in this case we're going to pass in the note object.
+
+01:43.140 --> 01:44.210
+So we have an empty array.
+
+01:44.310 --> 01:46.410
+We are one item and now we push it in.
+
+01:46.440 --> 01:49.230
+Which means we have an array with one item.
+
+01:49.230 --> 01:53.070
+The next step in the process is going to be to update the file.
+
+01:53.070 --> 01:57.950
+Now we don't have a file in place but we can load an ass and start creating one up above.
+
+01:57.960 --> 02:00.390
+Let's go ahead and load in FS.
+
+02:00.540 --> 02:06.110
+I'm going to create a concept called FS and set it equal to the return result from require.
+
+02:06.240 --> 02:11.550
+And we're going to require the FS module which is a core node module so there is no need to install
+
+02:11.550 --> 02:16.790
+it using NPM and with this in place we can take advantage of each ass down inside of ADD.
+
+02:16.810 --> 02:25.200
+Note Right after we push our item onto the notes array we're going to call FS dot right.
+
+02:25.480 --> 02:31.040
+File sync which we've used before we need to pass in two things the file name.
+
+02:31.090 --> 02:35.600
+I'm going to call this one notes Heinsohn data dot Jason.
+
+02:36.070 --> 02:41.050
+And then we're going to pass in the content we want to save which in this case is going to be the string
+
+02:41.050 --> 02:45.670
+of side notes array which means we can call Jason docstring ify
+
+02:48.370 --> 02:51.030
+passing in notes.
+
+02:51.070 --> 02:54.840
+Now we could have broken this out into its own variable and referenced the variable here.
+
+02:54.910 --> 02:58.560
+But since we're only going to be using it in one place I find this is the better solution.
+
+02:58.840 --> 03:04.180
+Now at this point when we add a new note it's going to update the notes data Jason File which will be
+
+03:04.180 --> 03:06.300
+created on the machine since it does not exist.
+
+03:06.310 --> 03:08.250
+And the note will sit inside of it.
+
+03:08.260 --> 03:09.160
+Now it's important to note.
+
+03:09.180 --> 03:14.200
+Currently every time you add a new note it's going to wipe all existing ones because we never load in
+
+03:14.200 --> 03:15.180
+the existing ones.
+
+03:15.280 --> 03:19.310
+But we can get started testing that this works as expected.
+
+03:19.390 --> 03:24.440
+I'm going to save the file and over inside of the terminal we can run this using node app.
+
+03:24.660 --> 03:30.120
+J.S. since you want to add a note we are going to be using that ad command which we set up.
+
+03:30.120 --> 03:32.860
+Then we're going to specify our title and our body.
+
+03:33.000 --> 03:40.190
+The title can get set equal to something like secret and for the body I'm going to go ahead and set
+
+03:40.190 --> 03:44.180
+it equal to the string some body here.
+
+03:44.210 --> 03:45.050
+Excellent.
+
+03:45.050 --> 03:49.670
+Now when we run this command from the terminal we're going to see what we expect a couple of the file
+
+03:49.670 --> 03:50.930
+commands we added.
+
+03:50.930 --> 03:55.390
+We see the command ad was executed and we have our Yard's arguments right here.
+
+03:55.490 --> 03:56.430
+Everything looks great.
+
+03:56.450 --> 03:59.720
+The title in the body do show up back inside of Adam.
+
+03:59.750 --> 04:05.870
+We also see we have a new notes hyphen and data Jason File and right here we have our note with the
+
+04:05.870 --> 04:07.630
+title secret and the body.
+
+04:07.670 --> 04:08.920
+Some body here.
+
+04:08.960 --> 04:10.810
+And this is fantastic.
+
+04:10.820 --> 04:14.940
+This is the first step in wiring up that ad note function.
+
+04:15.170 --> 04:20.570
+We have an existing notes file and we do want to take advantage of these notes as notes already exist.
+
+04:20.570 --> 04:24.130
+We don't want to simply wipe them every time someone adds a new note.
+
+04:24.200 --> 04:29.300
+That means up above at the beginning of the add a note function we're going want to go ahead and fetch
+
+04:29.360 --> 04:30.770
+those notes.
+
+04:30.770 --> 04:36.860
+I'm actually going to do it right here below where I find the notes and no variable inside of here.
+
+04:36.860 --> 04:42.500
+We're going to use FS dot Reed file sync which we've already explored.
+
+04:42.710 --> 04:48.570
+This is going to take the file name in our case notes hyphen data dot Jason.
+
+04:49.070 --> 04:53.670
+Now we are going to want to store the return value from read file sync on a variable.
+
+04:53.690 --> 04:57.610
+I don't recall that variable notes string.
+
+04:58.100 --> 05:03.760
+Since this is the string version we haven't passed it through Jason dump parts then and down below.
+
+05:03.830 --> 05:12.040
+I can set notes the variable we defined up above equal to the return value from Jason dot parse.
+
+05:12.170 --> 05:18.500
+Jason parce is going to take the string from the file we read and it's going to parse it into an array.
+
+05:18.680 --> 05:23.440
+Right here we can pass in notes string just like this awesome.
+
+05:23.700 --> 05:29.040
+With this in place adding a new no is no longer going to remove all of the notes that were already there.
+
+05:29.040 --> 05:32.890
+We have a note with the title of secret and a body of some body here.
+
+05:32.940 --> 05:37.050
+I'm going to use the up arrow key to load in the last command and I'm going to navigate over to the
+
+05:37.050 --> 05:41.780
+title and change it to secret to end or rerun the command this time around.
+
+05:41.880 --> 05:44.890
+You can see we now have two notes inside of our file.
+
+05:44.910 --> 05:46.720
+We have an array with two objects.
+
+05:46.740 --> 05:53.150
+The first one has the title of secret and the second one has the title of secret to which is brilliant.
+
+05:53.160 --> 05:54.590
+Now there is a problem here.
+
+05:54.690 --> 05:58.300
+If the notes data file does not exist which it won't.
+
+05:58.320 --> 06:03.300
+When the user first runs that command I'm going to go ahead and delete it to show you what happens.
+
+06:03.360 --> 06:04.820
+The program is going to crash.
+
+06:04.860 --> 06:10.440
+We can prove this by simply rerunning the last command after deleting the note data.
+
+06:10.470 --> 06:12.520
+Jason File right here.
+
+06:12.600 --> 06:15.110
+You can see we're actually getting a javascript error.
+
+06:15.270 --> 06:17.430
+No such file or directory exists.
+
+06:17.430 --> 06:23.460
+It's trying to open up the notes data Jason File but without much success to fix this we're going to
+
+06:23.460 --> 06:27.940
+use a try catch statement from javascript which hopefully you've seen in the past.
+
+06:28.020 --> 06:32.000
+If you haven't we're going to go over it really quick to create a try catch.
+
+06:32.010 --> 06:33.770
+All you do is you type try.
+
+06:34.230 --> 06:39.510
+Which is a reserved keyword and then you open and close a set of curly braces inside.
+
+06:39.510 --> 06:40.970
+Here is the code that you're going to run.
+
+06:40.980 --> 06:44.940
+This is the code that may or may not throw an error down below.
+
+06:44.940 --> 06:47.220
+You're going to specify the catch block.
+
+06:47.220 --> 06:52.500
+Now the catch block is going to take an argument an error argument and it also has a code block that
+
+06:52.500 --> 06:58.850
+runs this code is going to run if and only if one of your errors try actually occurs.
+
+06:58.860 --> 07:04.640
+So if we load the file using read file sync in the file exists that's fine catches never going to run.
+
+07:04.790 --> 07:09.820
+If it fails catch will run and we can do something to recover from that error.
+
+07:10.020 --> 07:14.310
+With this in place all we're going to do is move these two lines into try.
+
+07:14.610 --> 07:15.190
+That's it.
+
+07:15.330 --> 07:16.720
+Nothing else needs to happen.
+
+07:16.740 --> 07:22.050
+We don't need to put any code in catch although you do need to define the catch block.
+
+07:22.050 --> 07:23.850
+Now let's take a look at what happens.
+
+07:23.970 --> 07:26.860
+The first thing that happens is we create our static variables.
+
+07:26.880 --> 07:28.080
+Nothing special there.
+
+07:28.140 --> 07:30.020
+Then we try to load in the file.
+
+07:30.060 --> 07:36.210
+If this fails that is fine because we already defined notes to be an empty array and if the file doesn't
+
+07:36.210 --> 07:41.370
+exist and it fails then we probably want an empty array for notes anyways because clearly there are
+
+07:41.400 --> 07:42.310
+no notes.
+
+07:42.300 --> 07:43.620
+There's no file.
+
+07:43.620 --> 07:46.200
+Next up we're going to parse that data into notes.
+
+07:46.200 --> 07:50.320
+There is a chance this fails if there's invalid data in the notes hyphen data.
+
+07:50.340 --> 07:51.560
+Jason File.
+
+07:51.630 --> 07:52.610
+So these two lines.
+
+07:52.680 --> 07:57.060
+They could have problems and by putting them in TRY CATCH we're basically guaranteeing that the program
+
+07:57.090 --> 08:02.700
+isn't going to work unexpectedly even if the file doesn't exist or if it does exist but it contains
+
+08:02.700 --> 08:04.200
+corrupted data.
+
+08:04.590 --> 08:08.490
+With this in place we can now save notes and rerun that last command.
+
+08:08.490 --> 08:13.710
+Note I do not have the notes data file in place when I run the command.
+
+08:13.790 --> 08:14.950
+We don't see any errors.
+
+08:14.960 --> 08:20.270
+Everything seems to run as expected and when I visit Adam you can see the notes data file does indeed
+
+08:20.270 --> 08:23.420
+exist and the data inside of it looks great.
+
+08:23.420 --> 08:30.440
+This is all we need to do to fetch the notes update the notes with the new no and finally save the notes
+
+08:30.500 --> 08:32.050
+to the screen.
+
+08:32.060 --> 08:34.720
+Now there is still a slight problem with ADD and note.
+
+08:34.850 --> 08:36.490
+Currently add note.
+
+08:36.590 --> 08:38.710
+It allows for duplicate totals.
+
+08:38.750 --> 08:42.660
+I could already have a note in the adjacent file with the title of secret.
+
+08:42.710 --> 08:46.520
+I could come along and try to add a new note with the title of a secret and it's not going to throw
+
+08:46.520 --> 08:47.110
+an error.
+
+08:47.210 --> 08:52.190
+What I'd like to do is make the title unique so if there's already a note with that title it's going
+
+08:52.190 --> 08:56.740
+to throw an error letting you know to create a note with a different title.
+
+08:56.750 --> 09:01.880
+The first step to that process is going to be to loop through all of the notes after we load them in
+
+09:02.180 --> 09:04.970
+and check if there are any duplicates.
+
+09:04.970 --> 09:07.160
+If there are duplicates or not you get a call.
+
+09:07.160 --> 09:08.530
+These two lines.
+
+09:08.660 --> 09:10.630
+If there is no duplicates then it's fine.
+
+09:10.640 --> 09:15.710
+We will call both of these lines updating the notes data file.
+
+09:15.740 --> 09:18.200
+Now we're going to be refactoring this function down the line.
+
+09:18.200 --> 09:23.660
+Things are getting a little wonky and a little out of control but for the moment we can add this functionality
+
+09:23.660 --> 09:25.610
+right into the function.
+
+09:25.630 --> 09:33.860
+Let's go ahead and make a variable called duplicate notes duplicate notes is going to eventually store
+
+09:33.860 --> 09:39.800
+an array with all of the notes that already exist inside of the notes array that have the title of the
+
+09:39.800 --> 09:41.500
+note you're trying to create.
+
+09:41.510 --> 09:45.140
+Now this means that the duplicate notes array has any items that's bad.
+
+09:45.140 --> 09:51.220
+That means the note already exists and we should not add the note this is going to get set equal to
+
+09:51.310 --> 09:59.610
+a call to notes which is our right of notes dot shelter filter is an array method that takes a callback.
+
+09:59.620 --> 10:04.690
+We're going to use an arrow function and that callback is going to get called with the argument.
+
+10:04.840 --> 10:06.830
+In this case it's going to be the singular version.
+
+10:06.970 --> 10:10.510
+If I have an array of notes it's going to get called with an individual note.
+
+10:12.750 --> 10:17.580
+This function gets called once for every item in the array and you have the opportunity to return either
+
+10:17.580 --> 10:19.090
+true or false.
+
+10:19.230 --> 10:24.390
+If you return True it's going to keep that item in the array which will eventually get saved in two
+
+10:24.390 --> 10:26.820
+duplicate notes if you return false.
+
+10:26.850 --> 10:30.340
+The new array it generates it's not going to have that item inside of it.
+
+10:30.360 --> 10:40.320
+All we want to do is return true if the titles match which means we can return if Note dot title triple
+
+10:40.320 --> 10:42.210
+equals title.
+
+10:42.510 --> 10:45.550
+If they are equal then this is going to result in true.
+
+10:45.720 --> 10:50.640
+And the item will be kept in the array which means there are duplicate notes if the titles are not equal
+
+10:50.640 --> 10:55.680
+which is most likely the case that's going to result in false and duplicate notes will be empty.
+
+10:55.680 --> 11:01.020
+Now we can simplify this a little more and using aero functions aero functions actually allow you to
+
+11:01.020 --> 11:04.670
+remove the curly braces if you simply have one statement like we do here.
+
+11:04.950 --> 11:08.350
+I'm going to go ahead and copy this statement to the clipboard.
+
+11:08.730 --> 11:14.100
+Excluding the return key word and the semi-colon then what I'm going to do is delete everything from
+
+11:14.100 --> 11:18.670
+the closing curly brace to the opening curly brace right here.
+
+11:18.690 --> 11:20.170
+I can paste in my statement.
+
+11:20.280 --> 11:21.660
+This is perfectly valid.
+
+11:21.660 --> 11:26.700
+Using E.S. six era functions you have your arguments on the left you have your arrow and on the right
+
+11:26.880 --> 11:28.470
+you have one expression.
+
+11:28.470 --> 11:33.870
+The expression doesn't take a semicolon and it's automatically returned as the function result.
+
+11:33.870 --> 11:40.140
+This means the code we have here is identical to the code we had earlier only it's much simpler and
+
+11:40.140 --> 11:42.530
+it only takes up one line.
+
+11:42.540 --> 11:46.370
+Now that we have this in place we can go ahead and check the length of duplicate notes.
+
+11:46.500 --> 11:52.710
+If the length of duplicate notes is greater than zero that means we don't want to save the note because
+
+11:52.710 --> 11:54.810
+a note already exists with that title.
+
+11:54.930 --> 11:57.800
+If it is zero we're going to go ahead and save the note.
+
+11:58.290 --> 12:00.770
+If duplicate notes
+
+12:03.780 --> 12:10.170
+dot length is equal to zero here inside of the if condition we're comparing the notes length with the
+
+12:10.170 --> 12:16.410
+number 0 if they are equal then we do want to go ahead and push for the note onto the notes array and
+
+12:16.410 --> 12:17.500
+save the file.
+
+12:17.610 --> 12:21.040
+I'm going to cut these two lines and paste them right inside of the if statement.
+
+12:21.120 --> 12:23.330
+If they're not equal that's OK too.
+
+12:23.370 --> 12:28.620
+In that case we're going to go ahead and do nothing with this in place we can now save our file and
+
+12:28.620 --> 12:30.610
+test this functionality out.
+
+12:30.630 --> 12:35.220
+We have our notes data file and that already has a note with a title of secret to.
+
+12:35.250 --> 12:39.410
+Let's rerun the last command to try to add a new note with that same title.
+
+12:39.480 --> 12:40.560
+You run the command.
+
+12:40.560 --> 12:47.280
+We head back into our Jason File and you can see right here we still just have one note and this is
+
+12:47.280 --> 12:48.320
+fantastic.
+
+12:48.330 --> 12:51.450
+Now all the titles inside of our application are going to be unique.
+
+12:51.450 --> 12:55.450
+So we can use these titles to fetch notes and delete notes.
+
+12:55.470 --> 12:59.230
+Let's go ahead and test real quick that other notes can still be added.
+
+12:59.280 --> 13:04.280
+I'm going to change the title from secret to top secret run that command.
+
+13:04.340 --> 13:10.180
+And over here inside of our notes data file you can see both notes show up which is awesome.
+
+13:10.530 --> 13:11.910
+And that is it for this video.
+
+13:11.910 --> 13:17.430
+In this one we filled out the ad note function as I mentioned we are going to be doing some refactoring
+
+13:17.610 --> 13:22.920
+since this code which loads the file and this code which saves the file they're going to be used in
+
+13:22.920 --> 13:24.790
+most of the functions down below.
+
+13:24.840 --> 13:27.030
+But for now everything works great.
+
+13:27.090 --> 13:33.420
+We're able to add notes using the command line and we're able to save those notes into a Jasen file.
+
+13:33.820 --> 13:37.430
+That is it for this one I will see you next time where we do that refactoring.
+
+13:37.440 --> 13:43.320
+From there we'll be able to quickly fill out get all get no end remove note because we'll have those
+
+13:43.320 --> 13:47.240
+reusable functions that we can take advantage of Seah soon.

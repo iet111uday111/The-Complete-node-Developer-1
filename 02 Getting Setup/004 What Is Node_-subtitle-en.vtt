@@ -1,0 +1,319 @@
+WEBVTT
+
+00:01.020 --> 00:07.230
+In this video we're going to take a look at what node is know to came about when the original developers
+
+00:07.230 --> 00:08.220
+took javascript.
+
+00:08.220 --> 00:13.500
+Something you could usually only run inside of the browser and they let it run on your machine as a
+
+00:13.500 --> 00:15.210
+standalone process.
+
+00:15.210 --> 00:20.600
+This meant we could create applications using javascript outside of the context of the browser.
+
+00:20.970 --> 00:26.160
+Now javascript previously had a limited feature set when I used it in the browser I could do things
+
+00:26.160 --> 00:29.470
+like Update R-AL and remove the node logo.
+
+00:29.700 --> 00:34.940
+Adding click events or anything else but I couldn't really do much more with KNode.
+
+00:35.010 --> 00:41.050
+We now have a feature set that looks much more similar to other languages like Java Python or HP.
+
+00:41.280 --> 00:47.970
+We can write node applications using the javascript syntax that manipulate your file system in creating
+
+00:48.000 --> 00:49.560
+and removing folders.
+
+00:49.560 --> 00:54.840
+They can query databases directly and you can even create web servers using Knode all of which will
+
+00:54.840 --> 00:56.660
+be doing inside of course.
+
+00:56.670 --> 01:01.690
+These were things that were not possible in the past and they are because of note.
+
+01:01.920 --> 01:07.620
+Now both the node and the javascript that gets executed inside of your browser are both running on the
+
+01:07.620 --> 01:09.490
+exact same engine.
+
+01:09.490 --> 01:12.590
+It's called the V8 javascript runtime engine.
+
+01:12.630 --> 01:18.900
+It's an open source engine that takes javascript code and compiles it into much faster machine code
+
+01:19.110 --> 01:24.060
+and that's a big part of what makes node j ass so blazing fast.
+
+01:24.120 --> 01:30.020
+Machine Code is low level code that your computer can run directly without needing to interpret it.
+
+01:30.060 --> 01:32.970
+Your machine only knows how to run certain types of code.
+
+01:32.970 --> 01:39.360
+For example your machine can't run javascript code or code without first converting it into something
+
+01:39.360 --> 01:42.960
+it does now because the V-8 engine does this so well.
+
+01:42.960 --> 01:45.820
+Node is just super quick.
+
+01:46.110 --> 01:51.900
+Using this V-8 engine we can take our javascript code compile it to much quicker machine code and execute
+
+01:51.900 --> 01:52.550
+that.
+
+01:52.560 --> 01:54.630
+This is where all those new features come in.
+
+01:54.750 --> 01:55.970
+The V-8 engine.
+
+01:56.010 --> 01:59.380
+It's written in a language called C plus plus.
+
+01:59.460 --> 02:05.760
+So if you want to extend the node language you don't write node code you write C++ code that builds
+
+02:05.760 --> 02:08.400
+off of what V.A already has in place.
+
+02:08.430 --> 02:12.120
+Now we're not going to be writing any C++ code in this course.
+
+02:12.120 --> 02:15.520
+This course is not about adding on to note it is about using knode.
+
+02:15.630 --> 02:18.210
+So we're only going to be writing a javascript code.
+
+02:18.210 --> 02:21.620
+Speaking of javascript code let's go ahead and start writing some.
+
+02:21.620 --> 02:23.730
+Over inside of the terminal.
+
+02:23.730 --> 02:27.950
+Now throughout the course we're going to be creating files and executing those files.
+
+02:28.020 --> 02:33.690
+But we can actually create a brand new node process by running the node command.
+
+02:33.690 --> 02:36.390
+Here you see I have a little right carrot.
+
+02:36.390 --> 02:42.040
+This is waiting for javascript node code not a new command prompt command.
+
+02:42.060 --> 02:44.010
+That means I can run something like.
+
+02:44.010 --> 02:49.540
+Console dot log which as you probably know log's a message to the screen.
+
+02:49.700 --> 02:50.850
+A log is a function.
+
+02:50.880 --> 02:57.480
+So I'm going to call it as such opening and closing my parentheses and passing in a string inside of
+
+02:57.480 --> 03:01.230
+two single quotes a message like hello world.
+
+03:01.350 --> 03:04.190
+This is going to print Hello World to the screen.
+
+03:04.590 --> 03:08.320
+If I click on her hello world prints just like you'd expect.
+
+03:08.340 --> 03:10.480
+Now what actually happened behind the scenes.
+
+03:10.500 --> 03:12.540
+Well this is what node does.
+
+03:12.540 --> 03:17.480
+It takes your javascript code it compiles into machine code and executes it.
+
+03:17.520 --> 03:19.980
+Here you can see it executed our code.
+
+03:19.980 --> 03:22.660
+Printing out Hello world.
+
+03:22.710 --> 03:27.900
+Now this V-8 engine is running behind the scenes when we execute this command and it's also running
+
+03:27.900 --> 03:30.300
+over inside of the Chrome browser.
+
+03:30.300 --> 03:37.740
+If I open up the developer tools in Chrome by going to settings more tools developer tools I can ignore
+
+03:37.740 --> 03:42.180
+most of the things I'm just looking for the console which is a tab right here.
+
+03:42.180 --> 03:45.200
+This console is exactly like what we have over here.
+
+03:45.210 --> 03:48.100
+It's a place where we can run some Javascript code.
+
+03:48.300 --> 03:56.140
+I can type the exact same command console log hello world inside single quotes.
+
+03:56.200 --> 04:01.930
+Run it and right here you can see Hello World prints to the screen which is the exact same result we
+
+04:01.930 --> 04:03.940
+got when we ran it up above.
+
+04:03.940 --> 04:09.310
+In both cases we're running it through the V-8 engine and in both cases the output is the same.
+
+04:09.310 --> 04:11.120
+Now we already know that the two are different.
+
+04:11.230 --> 04:17.220
+Node has features like file system manipulation and the browser has features like manipulating what's
+
+04:17.230 --> 04:18.900
+shown inside of the window.
+
+04:19.090 --> 04:23.880
+Let's take a quick moment to explore their differences inside of the browser.
+
+04:24.040 --> 04:29.470
+You've probably used window if you've done any javascript development window as the global object it
+
+04:29.470 --> 04:32.380
+stores basically everything you have access to.
+
+04:32.470 --> 04:37.520
+Here you can see things like array down below we have all sorts of CSSA manipulation.
+
+04:37.570 --> 04:39.520
+We have Google Analytics keywords.
+
+04:39.580 --> 04:43.380
+Essentially every variable you create lives inside of window.
+
+04:43.600 --> 04:46.060
+We have something similar inside of node.
+
+04:46.060 --> 04:49.590
+It's not called window because there is no browser window.
+
+04:49.630 --> 04:54.660
+It is called Global global stores a lot of the same things.
+
+04:54.730 --> 05:00.040
+Here you can see methods that might be familiar like set time out and set interval up above.
+
+05:00.070 --> 05:05.620
+We have most of the things that are defined over inside of window with some exceptions.
+
+05:05.650 --> 05:14.430
+Now inside of the Chrome browser I also have access to something called Document Document stores a reference
+
+05:14.430 --> 05:21.270
+to the DOM up above the document shows exactly what I have up here inside of the browser's viewport.
+
+05:21.270 --> 05:25.970
+I can make changes to the document down below to update what it's showing up above.
+
+05:26.010 --> 05:31.700
+Now obviously we don't have this HDMI document inside of node but we do have something similar.
+
+05:31.770 --> 05:34.010
+What we have is called process.
+
+05:34.050 --> 05:37.500
+You can view it by running process from node.
+
+05:37.650 --> 05:43.290
+And here we have a lot of information about the specific node process that's being executed.
+
+05:43.290 --> 05:47.730
+There's also methods available here to shut down the current node process.
+
+05:47.730 --> 05:54.910
+What I'd like you to do is go ahead and run Process dot exit passing in as an argument.
+
+05:54.910 --> 06:01.620
+The number is zero 0 to say that things exited without air when I run this command you can see I'm now
+
+06:01.620 --> 06:03.270
+back at the command prompt.
+
+06:03.360 --> 06:09.240
+I've left node and I'm at a place where I could run any regular command prompt command like checking
+
+06:09.240 --> 06:10.760
+my node version.
+
+06:10.950 --> 06:16.560
+I can always get back into node by running node and I can leave it without using process.
+
+06:16.650 --> 06:19.890
+Exit by using Control C twice.
+
+06:20.160 --> 06:22.720
+Now I'm back at my regular command prompt.
+
+06:22.770 --> 06:27.630
+So these are the notable differences obviously inside of the browser when you have this viewable area
+
+06:28.020 --> 06:33.660
+window gets changed to global and that document basically becomes process.
+
+06:33.660 --> 06:38.730
+Now obviously that's a generalization but those are some of the big picture changes we'll be exploring
+
+06:38.730 --> 06:41.980
+all the minutia throughout the course.
+
+06:42.060 --> 06:48.510
+Now when someone on the street asks you what is Noad you can say oh node's a javascript runtime that
+
+06:48.510 --> 06:55.050
+uses the V-8 engine and when they ask you what the V-8 engine is you can say that the engine is an open
+
+06:55.050 --> 07:02.090
+source javascript engine written in C++ that takes javascript code and compiles it to machine code.
+
+07:02.100 --> 07:03.720
+It's used inside of no.
+
+07:03.790 --> 07:06.840
+Yes and it's used in the chrome browser.
+
+07:06.850 --> 07:07.910
+That's it for this one.
+
+07:07.920 --> 07:13.920
+We've explored the what of node in the next video we're going to explore why nodes become so popular
+
+07:14.120 --> 07:17.640
+its advantages its disadvantages and a heck of a lot more.
+
+07:17.640 --> 07:18.540
+So stay tuned.
+
+07:18.550 --> 07:20.030
+I will see you then.

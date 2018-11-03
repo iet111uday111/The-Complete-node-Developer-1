@@ -1,0 +1,409 @@
+WEBVTT
+
+00:00.240 --> 00:05.100
+In this video you're going to learn how to handle errors inside of your callback functions because as
+
+00:05.100 --> 00:07.680
+you might guess things don't always go as planned.
+
+00:07.680 --> 00:11.620
+For example the current version of the app has a few really big flaws.
+
+00:11.760 --> 00:18.210
+If I try to fetch whether using node apps out Jap's with a flag for a zip that doesn't exist like 0
+
+00:18.210 --> 00:25.550
+0 0 0 0 the program crashes which is a really big problem it's going off it's fetching the data.
+
+00:25.710 --> 00:30.600
+Eventually that data is going to come back and we get an error is trying to fetch properties that don't
+
+00:30.600 --> 00:35.770
+exist body results zero formatted address is not a real property.
+
+00:35.880 --> 00:37.380
+And this is a big problem.
+
+00:37.380 --> 00:40.710
+Our current callback it expects everything went as planned.
+
+00:40.710 --> 00:45.480
+It doesn't care about the error object doesn't look at response codes it just starts printing the data
+
+00:45.480 --> 00:46.260
+that it wants.
+
+00:46.270 --> 00:47.590
+This is the happy path.
+
+00:47.670 --> 00:51.110
+But in a real world node apps we have to handle errors as well.
+
+00:51.150 --> 00:55.560
+Otherwise the applications are going to become really useless and a user can get super frustrated when
+
+00:55.560 --> 00:59.250
+things don't seem to be working as expected in order to do this.
+
+00:59.280 --> 01:03.300
+We're going to add a set of if else statements inside of the callback.
+
+01:03.300 --> 01:07.890
+This is going to let us check certain properties to determine whether or not this call the one to this
+
+01:07.890 --> 01:11.160
+u r l should be considered a success or a failure.
+
+01:11.160 --> 01:16.200
+For example if the response code is a 404 we might want to consider that a failure and we're probably
+
+01:16.200 --> 01:21.180
+going to want to do something other than trying to print the address latitude and longitude if everything
+
+01:21.180 --> 01:24.380
+went well though this is a perfectly reasonable thing to do.
+
+01:24.840 --> 01:30.120
+There are two types of errors that we're going to worry about right now that's going to be machine errors
+
+01:30.180 --> 01:34.320
+things like being on able to connect to a network and these are usually going to show up in the air
+
+01:34.320 --> 01:38.180
+object and then errors coming from the other server the Google server.
+
+01:38.190 --> 01:42.780
+This could be something like an invalid address or anything else in order to get started.
+
+01:42.780 --> 01:48.150
+Let's take a look at what can happen when we pass a bad data to the Google API to view what actually
+
+01:48.150 --> 01:51.400
+comes back in a call like this where we have an invalid address.
+
+01:51.450 --> 01:56.260
+I'm going to head over to the browser and pull up that you are Al we used in the past I have it saved
+
+01:56.260 --> 02:01.710
+it right here and I'm going to go ahead and remove the address we used previously from the browser history
+
+02:02.010 --> 02:04.650
+type in 0 0 0 0 0.
+
+02:04.740 --> 02:05.410
+Hit enter.
+
+02:06.620 --> 02:08.400
+And right here you can see what comes back.
+
+02:08.510 --> 02:14.330
+We get our results right but there's no results and we have the status the status says 0 results.
+
+02:14.330 --> 02:17.460
+And this is the kind of information that's really important to track down.
+
+02:17.480 --> 02:22.770
+We can use the status text value to determine whether or not the request was successful.
+
+02:23.000 --> 02:29.450
+If we pass in a real zip code like 1 9 1 4 7 which is Philadelphia we're going to get our results back
+
+02:29.540 --> 02:32.400
+and down below the status is going to get set equal to.
+
+02:32.480 --> 02:40.250
+OK we can use this to determine that things went well between the status property and the air object
+
+02:40.370 --> 02:45.700
+which we have over inside of atom we can determine what exactly to do inside of the callback.
+
+02:45.710 --> 02:51.380
+The first thing we're going to do is add an if statement checking if the error object exists.
+
+02:51.380 --> 02:57.470
+This is going to run and the code inside this code block if the object exists if it doesn't fine we'll
+
+02:57.470 --> 03:02.750
+move on to the next else if statement which will write in just a moment if there is an error for the
+
+03:02.750 --> 03:07.500
+moment all we're going to do is cancel that log a message to the screen something like.
+
+03:07.520 --> 03:12.610
+Unable to connect to Google servers.
+
+03:14.480 --> 03:15.110
+Perfect.
+
+03:15.200 --> 03:19.060
+This is going to let the user now that we were unable to connect to the user's servers.
+
+03:19.070 --> 03:23.000
+Not that something went wrong with their data like the address was invalid.
+
+03:23.150 --> 03:26.210
+This is what's going to be inside of the air object.
+
+03:26.210 --> 03:32.800
+Now the next thing that we're going to do is add an ELSE IF statement and inside of the condition we're
+
+03:32.800 --> 03:39.370
+going to check that status property if the status property is zero results which it was for the zip
+
+03:39.370 --> 03:42.080
+code 0 0 0 0 0.
+
+03:42.190 --> 03:45.580
+We want to do something other than trying to print the address right here.
+
+03:45.580 --> 03:49.670
+Status equals zero results inside of our conditional.
+
+03:49.670 --> 04:02.780
+In Adam we can check just that if the abody dot status triple equals zero underscore results if that's
+
+04:02.780 --> 04:07.790
+the case we're going to print a different message other than unable to connect to the Google servers
+
+04:07.970 --> 04:09.230
+for this one.
+
+04:09.230 --> 04:18.150
+We can use Konsole dot larg to print unable to find that address this lets the user know that it wasn't
+
+04:18.150 --> 04:19.490
+a problem with the connection.
+
+04:19.590 --> 04:23.960
+We were just unable to find the address they provided and they should try with something else.
+
+04:25.040 --> 04:27.920
+I'm going to add an E an address to fix that typo.
+
+04:27.920 --> 04:28.700
+Perfect.
+
+04:28.700 --> 04:33.430
+Now we have error handling for those system errors like being unable to connect it to the Google servers
+
+04:33.710 --> 04:35.330
+and for errors with the input.
+
+04:35.330 --> 04:40.010
+In this case we're unable to find a location for that address.
+
+04:40.040 --> 04:41.510
+And this is fantastic.
+
+04:41.540 --> 04:43.390
+We have both of our errors handled.
+
+04:43.390 --> 04:45.880
+Now this body status property that shows up here.
+
+04:45.950 --> 04:48.100
+This is not going to be on every API.
+
+04:48.110 --> 04:52.470
+This is specific to the Google geocoder API when you explore a new API.
+
+04:52.550 --> 04:58.190
+It's important to try out all sorts of data good data like a real address and bad data like an invalid
+
+04:58.190 --> 05:03.710
+zip code to see exactly what properties you can use to determine whether or not the request was successful
+
+05:03.800 --> 05:04.870
+or if it failed.
+
+05:04.970 --> 05:10.850
+In this case if the status is zero results we know the request failed and we can act accordingly.
+
+05:10.850 --> 05:14.970
+Back inside of atom we can now go on to add our last else if clause.
+
+05:14.990 --> 05:20.280
+If things went well and this is going to be your challenge for the video I want you to add the else
+
+05:20.420 --> 05:21.040
+if clause.
+
+05:21.050 --> 05:24.150
+Checking if the body's status property equals OK.
+
+05:24.260 --> 05:28.920
+If it does you can go ahead and run these three lines inside of the code block.
+
+05:29.030 --> 05:33.770
+If it doesn't these lines shouldn't run because the code block is not going to execute and then a way
+
+05:33.770 --> 05:40.790
+to test things out over inside of the terminal try to fetch the address of 0 0 0 0 and make sure that
+
+05:40.790 --> 05:44.720
+instead of the program crashing you get our error message printing to the screen.
+
+05:44.720 --> 05:49.290
+Then you can go ahead and mess this you are all up by removing some of the important characters.
+
+05:49.310 --> 05:53.620
+Try again and make sure this time you get on able to connect to the Google servers.
+
+05:53.810 --> 05:55.170
+And last but not least.
+
+05:55.190 --> 05:57.400
+See what happens when you enter a valid address.
+
+05:57.410 --> 06:01.280
+Make sure our three console log statements still execute.
+
+06:01.280 --> 06:03.200
+Take a moment add that else clause.
+
+06:03.200 --> 06:08.780
+Test things out and when you're done go ahead and click play.
+
+06:08.810 --> 06:11.960
+Hopefully that didn't cause you too much trouble to get started.
+
+06:11.960 --> 06:17.210
+We're going to add that ELSE IF statement and inside of that condition we're going to check if body
+
+06:17.210 --> 06:18.690
+status is ok.
+
+06:18.920 --> 06:24.430
+Body dot status checking if it equals using triple equals.
+
+06:24.630 --> 06:31.160
+OK if it is OK then we're going to simply take these lines and move them right here.
+
+06:31.340 --> 06:35.400
+If it is OK to run those three cancel dot log statements.
+
+06:35.540 --> 06:41.570
+I'm going to add a missing semi-colon onto that last console dialog and now we have a request that handles
+
+06:41.600 --> 06:44.350
+errors really well if anything goes wrong.
+
+06:44.390 --> 06:49.460
+We have a special message for it and if things go right we print exactly what the user expects the address
+
+06:49.460 --> 06:51.110
+the latitude and longitude.
+
+06:51.350 --> 06:56.660
+To test this over inside of the terminal I'm going to start by rerunning the command with an address
+
+06:56.660 --> 06:58.040
+that's invalid.
+
+06:58.040 --> 06:59.920
+When I run this command you can see that.
+
+06:59.930 --> 07:03.660
+Unable to find address Princip to the screen and that is fantastic.
+
+07:03.770 --> 07:08.510
+Instead of the program crashing printing a bunch of errors we simply have a little message printing
+
+07:08.510 --> 07:09.440
+to the screen.
+
+07:09.440 --> 07:15.140
+This is because the code here that tried to access those properties that didn't exist no longer runs
+
+07:15.350 --> 07:20.720
+because this condition gets caught and we simply print the message to the screen.
+
+07:20.720 --> 07:23.750
+Now we also want to test that the first message prints when it should.
+
+07:23.900 --> 07:28.940
+I'm going to delete the asked and the dot from the U r l save the file and then I'm going to go ahead
+
+07:28.940 --> 07:34.040
+and rerun the previous command this time around you can see unable to connect to Google servers prints
+
+07:34.040 --> 07:34.660
+to the screen.
+
+07:34.670 --> 07:36.410
+Just like it should.
+
+07:36.470 --> 07:41.720
+Now I can test and the final thing by first re-adjusting and you are out to make it correct.
+
+07:42.740 --> 07:50.180
+And then fetching a valid address from the terminal I'm going to use the app node app g s setting address
+
+07:50.750 --> 07:55.330
+equal to the 0 8 8 to 2 which is a zip code in New Jersey.
+
+07:55.580 --> 08:00.560
+When I run this command we do indeed get our formatted address for Flemington New Jersey with a zip
+
+08:00.560 --> 08:04.940
+code and the state and we have our latitude and longitude right here.
+
+08:05.180 --> 08:06.680
+This is fantastic.
+
+08:06.710 --> 08:09.630
+We don't have the complete error handling model.
+
+08:10.010 --> 08:16.370
+To quickly recap what we did we simply added else if statements inside of the callback callbacks are
+
+08:16.370 --> 08:17.600
+just one function.
+
+08:17.600 --> 08:23.060
+So in order to figure out if things went well or if things didn't go well we have to use LCF statements.
+
+08:23.060 --> 08:28.100
+This lets us do different things like print different messages depending on whether or not we perceive
+
+08:28.100 --> 08:29.820
+the request to have gone well.
+
+08:29.990 --> 08:36.040
+For example when we make a request to Google providing a address that has problems in this case there
+
+08:36.040 --> 08:37.110
+are zero results.
+
+08:37.130 --> 08:41.780
+The error object is not going to get populated because it's not technically an error in terms of what
+
+08:41.780 --> 08:43.620
+request thinks it is.
+
+08:43.730 --> 08:49.550
+It's actually in the response object which is why we have to use bodycam status in order to check this
+
+08:49.710 --> 08:50.250
+error.
+
+08:50.420 --> 08:52.760
+In this case we have zero results status.
+
+08:52.760 --> 08:55.420
+That is indeed an error and we act accordingly.
+
+08:55.590 --> 08:59.760
+And that is it for this one we now have error handling in place we handle system errors.
+
+08:59.780 --> 09:04.880
+Google server errors and we have our success case in the next video we're going to be moving this into
+
+09:04.880 --> 09:07.980
+a separate file and abstracting a lot of details.
+
+09:08.000 --> 09:11.680
+We'll talk about what that means and why it's important next so stay tuned.
+
+09:11.680 --> 09:13.090
+We'll see you then.

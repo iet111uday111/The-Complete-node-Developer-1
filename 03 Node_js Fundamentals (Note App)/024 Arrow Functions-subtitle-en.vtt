@@ -1,0 +1,499 @@
+WEBVTT
+
+00:00.240 --> 00:05.340
+In this video you're going to learn the ins and outs of the arrow function it's an E.S. Six feature
+
+00:05.520 --> 00:08.660
+and we have taken a little look at it inside of notes.
+
+00:08.720 --> 00:09.240
+Yes.
+
+00:09.270 --> 00:13.850
+We used it in a few basic examples to create methods like fetch notes and save notes.
+
+00:14.010 --> 00:18.300
+And we also passed that into a few Array methods like philtre right here.
+
+00:18.300 --> 00:24.270
+And for each we used it as the callback function that gets called once for every item in the array.
+
+00:24.270 --> 00:30.210
+Now if you try to swap out all of the functions in a program with aero functions it's most likely not
+
+00:30.210 --> 00:34.500
+going to work as expected because there are some differences between the two and it's really important
+
+00:34.500 --> 00:36.040
+to know what those differences are.
+
+00:36.090 --> 00:42.670
+So you can make the decision to use a regular E.S. five function or to use an E.S. 6 arrow function.
+
+00:42.900 --> 00:46.920
+The goal in this video is to give you the knowledge to make that choice and we're going to kick things
+
+00:46.920 --> 00:49.650
+off by creating a new file in the playground folder.
+
+00:50.730 --> 00:56.090
+Called Aero hyphen function dot J.S. inside of here.
+
+00:56.160 --> 01:00.480
+We're going to play around with a few examples going over some of the subtleties to the arrow function
+
+01:01.080 --> 01:03.480
+before we type anything inside of the file.
+
+01:03.480 --> 01:06.010
+I'm going to start up this file with gnomon.
+
+01:06.060 --> 01:10.010
+So every time we make a change it automatically refreshes over in the terminal.
+
+01:10.050 --> 01:14.370
+If you remember gnomon is that utility we installed earlier in this section.
+
+01:14.450 --> 01:19.480
+It was a global NPM module gnomon is the command to run.
+
+01:19.490 --> 01:23.740
+And then we just pass in the file path like we would for any other node command.
+
+01:23.870 --> 01:29.920
+Here we're going into the playground folder and the file itself is called erro hyphen function.
+
+01:29.980 --> 01:36.170
+J.S. we're going to run the file and nothing prints to the screen besides the node monologs because
+
+01:36.170 --> 01:38.360
+we have nothing in the file to get started.
+
+01:38.360 --> 01:44.480
+We're going to create a function called Square by making a variable called Square and setting it equal
+
+01:44.480 --> 01:47.600
+to an arrow function to make our arrow function.
+
+01:47.660 --> 01:52.580
+We're going to first provide the arguments inside Apprentice's since we're going to be squaring a number
+
+01:52.580 --> 01:55.870
+we just need one number and I'm going to refer to that number as x.
+
+01:55.970 --> 02:02.930
+If I pass in three I should expect nine back and if I pass in nine I would expect 81 back after the
+
+02:02.930 --> 02:03.920
+arguments list.
+
+02:03.920 --> 02:08.630
+We have to put the arrow in Arrow function by putting the equal sign and the greater than symbol together
+
+02:08.780 --> 02:14.360
+creating our nice little arrow from here we can go ahead and provide inside of curly braces all the
+
+02:14.360 --> 02:16.540
+statements we want to execute.
+
+02:16.580 --> 02:25.790
+We might go ahead and create a variable called result setting that equal to x times x then we might
+
+02:25.790 --> 02:29.600
+return the result variable using the return keyword.
+
+02:29.600 --> 02:33.740
+Now obviously this can be done on one line but the goal here is to illustrate that when you use the
+
+02:33.740 --> 02:38.930
+statement as a function you can put as many lines as you want in between those curly braces.
+
+02:38.930 --> 02:40.500
+Let's go ahead and call Square.
+
+02:40.520 --> 02:44.460
+We're going to do that using counsel that log so we can print the result to the screen.
+
+02:45.270 --> 02:46.010
+Counsel.
+
+02:46.070 --> 02:48.250
+Lague right here.
+
+02:48.250 --> 02:53.830
+I'm going to call square and we're going to call square with nine the square of nine would be 81.
+
+02:53.830 --> 02:56.680
+So we would expect 81 to print to the screen.
+
+02:56.980 --> 02:58.830
+I'm going to save the arrow function file.
+
+02:58.830 --> 03:03.410
+And over here in the terminal 81 shows up just like we expect.
+
+03:03.460 --> 03:06.360
+Now this is the statement syntax for the era function.
+
+03:06.370 --> 03:11.770
+We've also explored the expression syntax which lets you simplify your erro functions when you're just
+
+03:11.770 --> 03:13.800
+going to be returning some expression.
+
+03:14.080 --> 03:18.340
+In this case all we need to do is specify the expression that we want to return.
+
+03:18.370 --> 03:21.120
+In our case that's X times x.
+
+03:21.310 --> 03:26.320
+You don't need to explicitly add the return keyword when you use the arrow function with all your curly
+
+03:26.320 --> 03:26.850
+braces.
+
+03:26.860 --> 03:29.620
+It's implicitly provided for you.
+
+03:29.620 --> 03:31.990
+That means we can save the function just like this.
+
+03:31.990 --> 03:34.470
+And the exact same result is going to print to the screen.
+
+03:34.560 --> 03:36.120
+81 shows up.
+
+03:36.160 --> 03:40.870
+This is one of the great advantages of era functions when you're using them in cases like filter or
+
+03:40.870 --> 03:41.640
+for each.
+
+03:41.710 --> 03:43.860
+Which we did in the notes file.
+
+03:43.920 --> 03:49.330
+It lets you simplify your code keeping everything on one line and making your code a lot easier to maintain
+
+03:49.360 --> 03:51.010
+and scan.
+
+03:51.010 --> 03:55.310
+Now there is one thing I want to note when you have an arrow function that has just one argument and
+
+03:55.330 --> 03:57.850
+you can actually leave off the parentheses.
+
+03:57.850 --> 04:03.160
+If you have two or more arguments or you have zero arguments like this you are going to need to provide
+
+04:03.160 --> 04:03.990
+the parentheses.
+
+04:04.060 --> 04:08.560
+But if you just have one you can reference it like this with no parentheses.
+
+04:08.560 --> 04:13.040
+If I save the file in this state 81 still prints to the screen.
+
+04:13.180 --> 04:13.960
+And this is great.
+
+04:13.960 --> 04:19.560
+We have an even simpler version of our arrow function now that we have a basic example down.
+
+04:19.660 --> 04:25.030
+I want to move on to a more complex example that's going to explore the nuances between regular functions
+
+04:25.090 --> 04:27.040
+and aero functions.
+
+04:27.040 --> 04:32.350
+To illustrate this I'm going to make a variable called the user which is going to be an object on this
+
+04:32.350 --> 04:32.850
+object.
+
+04:32.850 --> 04:35.640
+We're going to specify one property name.
+
+04:35.710 --> 04:39.620
+Go ahead and set name equal to the string your name in this case.
+
+04:39.640 --> 04:41.990
+I'm going to set it equal to the string Andrew.
+
+04:42.160 --> 04:47.860
+Then we can go ahead and define a method on the user object right after name with my comma at the end
+
+04:47.860 --> 04:48.680
+of the line.
+
+04:48.700 --> 04:50.320
+I'm going to provide the method.
+
+04:50.320 --> 04:55.630
+Say hi setting an equal to an arrow function that doesn't take any arguments for the moment.
+
+04:55.660 --> 04:57.880
+We'll keep the arrow function really simple.
+
+04:57.970 --> 05:05.170
+All we're going to do inside of say hi is use console log to print to the screen inside of template
+
+05:05.170 --> 05:05.720
+strings.
+
+05:05.740 --> 05:09.020
+Hi we're not using template strings yet but we will in a second.
+
+05:09.040 --> 05:11.890
+I'm going to use them here down below.
+
+05:12.010 --> 05:15.840
+We can test out say hi by calling it user dot.
+
+05:15.850 --> 05:23.180
+Say hi I'm going to go ahead and call it then save the file and we would expect that high prints to
+
+05:23.180 --> 05:28.510
+the screen because all our erro function does is use console log to print a static string.
+
+05:28.520 --> 05:31.050
+Nothing here is going to cause any problems.
+
+05:31.070 --> 05:35.200
+You'll be able to swap out a regular function for an arrow function without issue.
+
+05:35.240 --> 05:40.190
+Now the first issue that's going to arise when you're using aero functions is the fact that aero functions
+
+05:40.220 --> 05:41.500
+do not bind a.
+
+05:41.510 --> 05:42.750
+This keyword.
+
+05:42.890 --> 05:48.050
+So if you are using this inside of your function it's not going to work when you swap it out for an
+
+05:48.080 --> 05:49.050
+arrow function.
+
+05:49.060 --> 05:51.250
+This binding refers to the parent binding.
+
+05:51.380 --> 05:55.150
+In this case there is no parent function so this would refer to the global.
+
+05:55.160 --> 05:56.840
+This keyword.
+
+05:56.840 --> 05:59.730
+Now here we have our council that log that does not use this.
+
+05:59.750 --> 06:02.510
+I'm going to swap it out for a case that does.
+
+06:02.510 --> 06:08.120
+We're going to put a period after high and I'll say I'm followed by the name which we would usually
+
+06:08.120 --> 06:12.650
+be able to access via this dot name.
+
+06:12.650 --> 06:15.520
+If I try to run this code it is not going to work as expected.
+
+06:15.530 --> 06:16.480
+We're going to get high.
+
+06:16.510 --> 06:21.620
+I'm undefined printing to the screen which is exactly what we have in order to fix this.
+
+06:21.650 --> 06:24.590
+We're going to look at an alternative syntax to erro functions.
+
+06:24.590 --> 06:30.080
+That's great when you're defining object literals like we are right here after say hi.
+
+06:30.200 --> 06:38.000
+I'm going to make a new method called Say hi Allt using a different Yes 6 feature E-6 provides us a
+
+06:38.000 --> 06:40.610
+new way to make methods on objects.
+
+06:40.610 --> 06:42.250
+You provide the method name.
+
+06:42.260 --> 06:43.390
+Say hi Allt.
+
+06:43.460 --> 06:45.060
+Then you go right to the parentheses.
+
+06:45.080 --> 06:46.400
+Skipping the colon.
+
+06:46.520 --> 06:51.140
+There's also no need for the function keyword even though it is a regular function it's not an arrow
+
+06:51.140 --> 06:51.700
+function.
+
+06:51.830 --> 06:55.710
+Then we move on to our curly braces inside of here.
+
+06:55.730 --> 07:00.210
+I can have the exact same code we have above but it is going to work as expected.
+
+07:00.350 --> 07:01.030
+It's going to print.
+
+07:01.070 --> 07:03.170
+Hi I'm Andrew.
+
+07:03.170 --> 07:08.480
+I'm going to call say hi all down below instead of the regular say hi method and right here you can
+
+07:08.480 --> 07:08.680
+see.
+
+07:08.680 --> 07:11.020
+Hi I'm Andrew Prince to the screen.
+
+07:11.060 --> 07:14.510
+This is a syntax that you can use to solve this problem.
+
+07:14.600 --> 07:20.770
+When you're creating functions on object literals like we are here now that we know that this keyword
+
+07:20.780 --> 07:22.090
+does not get bound.
+
+07:22.100 --> 07:24.230
+Let's go ahead and explore one other quirk.
+
+07:24.230 --> 07:25.670
+The arrow functions have.
+
+07:25.670 --> 07:31.640
+It also does not bind that arguments array regular functions like the one we have here are going to
+
+07:31.640 --> 07:36.100
+have an arguments array that's accessible inside of the function console.
+
+07:36.150 --> 07:37.940
+Lague arguments.
+
+07:37.970 --> 07:42.110
+Now it's not an actual array it's more like an object with array like properties.
+
+07:42.110 --> 07:48.700
+You can google that for more information but the arguments object is indeed specified in a regular function.
+
+07:48.710 --> 07:56.210
+If I pass in one two and three and say the file We're going to get that back when we log out arguments
+
+07:56.570 --> 08:01.700
+over inside of gnomon it's taking a quick second to restart and write.
+
+08:01.710 --> 08:03.210
+Here we have our object.
+
+08:03.310 --> 08:05.570
+We have one two and three.
+
+08:05.650 --> 08:08.730
+We have the index for each as the property name.
+
+08:09.040 --> 08:11.030
+And this works because we're using a regular function.
+
+08:11.050 --> 08:15.050
+If we were to switch to the arrow function though it is not going to work as expected.
+
+08:15.280 --> 08:20.920
+I'm going add console dialog arguments inside of my arrow function and I'm going to switch from calling
+
+08:20.980 --> 08:23.550
+say hi alt back to the original method.
+
+08:23.560 --> 08:26.500
+Say hi when I save the file here.
+
+08:26.500 --> 08:29.360
+We're going to get something a lot different than what we had before.
+
+08:29.420 --> 08:32.980
+We're actually getting the global arguments variable.
+
+08:32.990 --> 08:36.370
+This is the arguments variable for that wrapper function we explored.
+
+08:36.370 --> 08:39.480
+Here we have things like the require function definition.
+
+08:39.520 --> 08:44.500
+Our modules object and a couple of string paths to the file end to the current directory.
+
+08:44.500 --> 08:49.180
+These are obviously not what we are expecting and that is another thing we have to be aware of when
+
+08:49.180 --> 08:50.490
+you're using aero functions.
+
+08:50.500 --> 08:51.800
+You're not going to get that arguments.
+
+08:51.850 --> 08:52.530
+Keyword.
+
+08:52.540 --> 08:58.820
+You're not going to get that this binding that you'd expect these problems mostly arise when you try
+
+08:58.820 --> 09:02.270
+to create methods on an object and use aira functions.
+
+09:02.270 --> 09:05.440
+I would highly recommend switching to this syntax in those cases.
+
+09:05.570 --> 09:10.280
+You get a simplified syntax but you also get the binding and you get your arguments variable.
+
+09:10.280 --> 09:13.560
+Like you'd expect that is it for this video.
+
+09:13.580 --> 09:18.260
+You've explored a little bit more about aero functions how they work when to use them and when not to
+
+09:18.260 --> 09:18.850
+use them.
+
+09:18.950 --> 09:24.590
+In general if you don't need the this keyword or the arguments keyword you can use an arrow function
+
+09:24.590 --> 09:25.620
+without problem.
+
+09:25.670 --> 09:30.070
+And I always prefer using era functions over regular functions when I can.
+
+09:30.350 --> 09:35.090
+Now in the next section when we explore asynchronous programming we're going to use both regular functions
+
+09:35.090 --> 09:40.760
+and aero functions a lot more and you'll be able to see firsthand how to choose between one over the
+
+09:40.760 --> 09:41.250
+other.
+
+09:41.270 --> 09:43.880
+That's coming up in the next section so stay tuned.
+
+09:43.880 --> 09:45.790
+I am super excited to get to it.
+
+09:45.800 --> 09:47.270
+I'll see you soon.

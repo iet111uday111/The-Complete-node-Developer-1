@@ -1,0 +1,745 @@
+WEBVTT
+
+00:00.850 --> 00:04.290
+In this video you're going to take an in-depth look at callback functions.
+
+00:04.300 --> 00:10.750
+Then we're going to go ahead and use them to fetch some data from that Google geolocation API that's
+
+00:10.750 --> 00:16.390
+going to be the API that takes an address and returns the latitude and longitude coordinates.
+
+00:16.510 --> 00:21.820
+And this is going to be great for the weather app because the weather API we use requires those coordinates
+
+00:21.820 --> 00:23.800
+and it returns the real time weather data.
+
+00:23.950 --> 00:29.350
+That's stuff like the temperature the five day forecast wind speed humidity and other pieces of weather
+
+00:29.500 --> 00:30.690
+information.
+
+00:30.700 --> 00:36.070
+Now before we get started making that request I want to take a few moments to talk about callback functions
+
+00:36.280 --> 00:39.960
+and we have already used them right here inside of set time out.
+
+00:39.970 --> 00:46.840
+We used a callback function in general a callback function is defined as a function that gets passed
+
+00:46.900 --> 00:52.030
+as an argument to another function and is executed after some of that happens.
+
+00:52.030 --> 00:53.980
+Now this is a general definition.
+
+00:53.980 --> 00:59.710
+There is no strict definition in javascript but it does satisfy the function in this case.
+
+00:59.710 --> 01:05.800
+Here we have a function and we pass it as an argument to another function set time out and it does get
+
+01:05.800 --> 01:11.870
+executed after some event that event and being two seconds passing now the event could be other things.
+
+01:11.950 --> 01:18.880
+It could be a database query finishes it could be an HTP request comes back in those cases you are going
+
+01:18.880 --> 01:22.920
+to want a callback function like the one here to do something with that data.
+
+01:23.050 --> 01:26.710
+In the case of that time out we don't get any data back because we're not requesting any.
+
+01:26.710 --> 01:29.650
+We're just creating an arbitrary delay.
+
+01:29.830 --> 01:36.340
+Now before we go ahead and actually make an HTP request to Google I want to create a callback function
+
+01:36.340 --> 01:38.980
+example inside of the playground folder.
+
+01:39.160 --> 01:45.730
+Let's make a new file called callbacks Yes inside of here.
+
+01:45.760 --> 01:50.600
+We're going to create a contrived example of what a callback function would look like behind the scenes.
+
+01:50.690 --> 01:55.060
+We're going to be making real examples throughout the course and we'll be using dozens and dozens of
+
+01:55.060 --> 01:56.820
+functions that require callbacks.
+
+01:56.890 --> 02:01.030
+But for now we're going to start with something pretty simple to get started.
+
+02:01.060 --> 02:04.140
+Let's make a variable called Get user.
+
+02:04.180 --> 02:06.030
+This is going to be the function will define.
+
+02:06.040 --> 02:10.990
+That's going to show you exactly what happens behind the scenes when you pass a callback to another
+
+02:10.990 --> 02:16.450
+function the get user callback is going to be something that simulates what it would look like to fetch
+
+02:16.480 --> 02:19.450
+a user from a database or some sort of web API.
+
+02:19.550 --> 02:20.910
+It is going to be a function.
+
+02:20.980 --> 02:25.700
+So we'll set it as such using aero function and it is going to take some arguments.
+
+02:25.870 --> 02:30.700
+The first argument it's going to take is that the idea of this is going to be some sort of unique number
+
+02:30.700 --> 02:32.790
+that represents each user.
+
+02:32.790 --> 02:36.550
+I might have an idea at 54 and you might have an idea of two thousand.
+
+02:36.550 --> 02:40.020
+Either way we're going to need the idea to find a user.
+
+02:40.030 --> 02:43.050
+Next up we're going to get a callback function.
+
+02:43.160 --> 02:48.240
+This is what we're going to call later with the data with that user object.
+
+02:48.270 --> 02:53.650
+This is exactly what happens when you pass a function to set time out the set time out function definition
+
+02:53.770 --> 02:55.460
+looks like this.
+
+02:55.500 --> 02:57.830
+It has a callback and it has a delay.
+
+02:57.890 --> 03:01.890
+You take the call back and after a certain amount of time passes you call it.
+
+03:01.940 --> 03:07.200
+In our case though we're going to switch the order with an ID first and the callback second.
+
+03:07.220 --> 03:11.720
+Now we can go ahead and call this function before actually filling it out.
+
+03:11.720 --> 03:16.850
+We're going to call get user down below on line 5 just like we did with set time out.
+
+03:17.090 --> 03:20.050
+I'm going to call get user passing in those two arguments.
+
+03:20.180 --> 03:24.260
+The first one is going to be some I.D. since we're faking it for now it doesn't really matter.
+
+03:24.260 --> 03:25.820
+I'm going to go with 31.
+
+03:26.000 --> 03:31.100
+And the second argument is going to be the function that we want to run when that user data comes back.
+
+03:31.100 --> 03:32.480
+And this is really important.
+
+03:33.450 --> 03:36.570
+Right here we're going to define that function.
+
+03:36.570 --> 03:41.970
+Now the callback alone is it really useful to being able to run this function after the user data comes
+
+03:41.970 --> 03:45.870
+back only works if we actually get the user data.
+
+03:45.870 --> 03:48.120
+And that's what we're going to expect right here.
+
+03:48.120 --> 03:54.000
+We're going to expect that the user object things like ID name email password or whatever comes back
+
+03:54.000 --> 03:59.190
+as an argument to the callback function then and here I can actually do something with that data.
+
+03:59.340 --> 04:05.220
+I could show it on a web app I could respond to an API request or in our case I can simply print it
+
+04:05.220 --> 04:08.400
+to the console console log user.
+
+04:08.880 --> 04:13.980
+Now that we have the call in place let's go ahead and fill out the get user function to work like we
+
+04:13.980 --> 04:15.660
+have it defined here.
+
+04:15.720 --> 04:21.030
+The first thing I'm going to do is create a dummy object that's going to be that user object in the
+
+04:21.030 --> 04:21.420
+future.
+
+04:21.420 --> 04:25.980
+This is going to come from database queries but for now we'll just create a variable user sending an
+
+04:25.980 --> 04:27.810
+equal to some object.
+
+04:27.810 --> 04:34.290
+Let's set an idea property equal to whatever idea that user passes in and we'll set a name property
+
+04:34.320 --> 04:36.070
+equal to some name.
+
+04:36.090 --> 04:38.170
+I'm going to go ahead and use.
+
+04:38.670 --> 04:44.020
+Now that we have our user object what we want to do is call the call back passing it as an argument.
+
+04:44.080 --> 04:49.230
+Then down here we'll be able to actually run this function to printing the user to the screen in order
+
+04:49.230 --> 04:49.880
+to do that.
+
+04:50.010 --> 04:55.500
+We would call the callback function like any other function simply referencing it by name and adding
+
+04:55.500 --> 04:57.710
+our parentheses like this.
+
+04:57.720 --> 05:03.140
+Now if we call it like this we're not passing any data from get user back to the callback.
+
+05:03.180 --> 05:08.370
+In this case we're expecting a user to get passed back which is why I'm going to specify the user right
+
+05:08.400 --> 05:09.330
+here.
+
+05:09.390 --> 05:10.770
+Now the naming isn't important.
+
+05:10.770 --> 05:17.610
+I happen to call it user here here and here but I could easily call this user object and user object
+
+05:17.640 --> 05:18.680
+here.
+
+05:18.750 --> 05:20.640
+All that matters is the arguments position.
+
+05:20.640 --> 05:26.100
+In this case we called the first argument user object and the first argument passed back is indeed that
+
+05:26.100 --> 05:27.560
+user object.
+
+05:27.750 --> 05:31.800
+With this in place we can now run our example over in the terminal.
+
+05:31.800 --> 05:33.720
+I'm going to run this using node.
+
+05:34.050 --> 05:35.700
+It's in the playground folder.
+
+05:36.710 --> 05:39.070
+And we call the file callbacks.
+
+05:39.190 --> 05:40.280
+Yes.
+
+05:40.550 --> 05:44.490
+When I go ahead and run the file right away our data prints to the screen.
+
+05:44.510 --> 05:46.060
+And this is awesome.
+
+05:46.190 --> 05:50.790
+We've created a callback function using synchronous programing.
+
+05:50.810 --> 05:55.970
+Now as I mentioned this is still a contrived example because there is no need for a callback in this
+
+05:55.970 --> 05:56.600
+case.
+
+05:56.660 --> 05:59.120
+We could simply return the user object.
+
+05:59.120 --> 06:03.830
+But in that case we wouldn't be using a callback in the whole point here is to explore what happens
+
+06:03.830 --> 06:09.170
+behind the scenes how we actually call the function like it's passed in as an argument.
+
+06:09.170 --> 06:12.020
+Now we can also simulate a delay using set time out.
+
+06:12.020 --> 06:16.460
+So let's go ahead and do that before going into a real world example right here.
+
+06:16.520 --> 06:21.380
+I'm going to use set time out it just like we did before.
+
+06:21.580 --> 06:27.900
+I'm going to pass an arrow function in as the first argument and I'm going to go ahead and set a delay
+
+06:28.140 --> 06:31.840
+of three seconds using three thousand milliseconds.
+
+06:31.850 --> 06:33.770
+Now I can take my call back.
+
+06:33.780 --> 06:41.990
+Call delete it from line 10 and add it inside of the callback function call back user.
+
+06:42.000 --> 06:46.860
+Now we're not going to be responding to the get user request until three seconds have passed.
+
+06:46.860 --> 06:52.080
+Now this is going to be more or less similar to what happens when we create real world examples of callbacks
+
+06:52.350 --> 06:57.180
+we pass in a callback some sort of delay happens whether we're requesting from a database or from an
+
+06:57.240 --> 07:01.070
+HTP endpoint then the callback gets fired.
+
+07:01.170 --> 07:07.630
+If I save callbacks J.S. and rerun it from the terminal you can see we wait those three seconds.
+
+07:07.700 --> 07:09.050
+That's the simulated delay.
+
+07:09.050 --> 07:11.910
+And then the user object prints to the screen.
+
+07:11.990 --> 07:13.860
+This is fantastic.
+
+07:13.880 --> 07:18.560
+This is exactly the principles that we need to understand in order to start working with callbacks and
+
+07:18.560 --> 07:21.440
+that is exactly what we're going to start doing right now.
+
+07:22.590 --> 07:27.470
+Now the request that we're going to be making to that geo location API it can actually be simulated
+
+07:27.480 --> 07:30.810
+over in the browser before we ever make that request in node.
+
+07:30.930 --> 07:33.200
+And that's exactly what I want to do to get started.
+
+07:33.240 --> 07:38.130
+This is going to require you to type a kind of long u r l but hopefully you only have to type it once
+
+07:38.130 --> 07:40.460
+because it will be saved in your browser history.
+
+07:40.710 --> 07:43.250
+So follow along for just a second.
+
+07:43.260 --> 07:52.170
+HTP ass Colan forward slash forward slash maps dot Google API I's dot com.
+
+07:52.200 --> 07:59.640
+Now we're going to go to forward's slash maps forward slash API forward slash geocoder forward slash.
+
+07:59.640 --> 08:01.090
+Jason that's it.
+
+08:01.140 --> 08:05.550
+I promise you only have to type that this one time hopefully it saved in your browser history and you
+
+08:05.550 --> 08:07.310
+can simply copy and paste it.
+
+08:07.320 --> 08:09.390
+Now this is the actual end point and you are Al.
+
+08:09.420 --> 08:12.980
+But we do have to specify the address for which we want to geocoder.
+
+08:13.120 --> 08:17.520
+We're going to do that using query strings which are going to be provided right after the question mark
+
+08:17.640 --> 08:18.170
+here.
+
+08:18.240 --> 08:24.780
+We can set up a set of key value pairs key followed by the equal sign value and we can add multiples
+
+08:24.930 --> 08:26.240
+using the ampersand.
+
+08:26.250 --> 08:29.840
+Here we have key two equals value 2.
+
+08:30.120 --> 08:37.210
+In our case all we need is one query string address and for the address query string we're going to
+
+08:37.210 --> 08:38.980
+set it equal to an address.
+
+08:38.980 --> 08:42.480
+Now I'm not using my actual address so please don't try to send me an e-mail.
+
+08:42.480 --> 08:46.990
+It will not get to me in order to fill out that query address.
+
+08:46.990 --> 08:51.960
+I'm going to go ahead and start typing 13:1 space Lombard Street.
+
+08:52.900 --> 08:55.120
+Space Philadelphia.
+
+08:55.120 --> 08:57.420
+Now you'll notice that I am using spaces here.
+
+08:57.430 --> 09:02.410
+I'm doing this to illustrate a point you can use spaces in the browser because it's going to automatically
+
+09:02.530 --> 09:07.510
+convert those spaces to something else but inside of node we're going to have to take care of that ourselves
+
+09:07.660 --> 09:10.070
+and we'll talk about that a little later it's super easy.
+
+09:10.090 --> 09:12.380
+For now though we can leave the spaces in.
+
+09:12.430 --> 09:18.250
+Hit enter and you can see they automatically get converted for us space characters get converted 2 percent
+
+09:18.290 --> 09:22.280
+20 which is the encoded version of a space down below.
+
+09:22.360 --> 09:28.720
+I have all of the data that comes back now I'm using a extension called Jason view which is available
+
+09:28.720 --> 09:30.190
+for Chrome and Firefox.
+
+09:30.280 --> 09:33.060
+I highly recommend installing adjacent view.
+
+09:33.190 --> 09:38.170
+You can even take a moment to pause the video install it for your browser then refresh the page and
+
+09:38.170 --> 09:41.020
+you should see a much nicer version of your Jason data.
+
+09:41.020 --> 09:47.140
+It lets you minimize and expand various properties and makes it super easy to navigate.
+
+09:47.140 --> 09:49.710
+Now the data below has exactly what we need.
+
+09:49.720 --> 09:51.490
+We have an address component's property.
+
+09:51.490 --> 09:56.020
+We don't need that down below we have a formatted address which is really nice.
+
+09:56.080 --> 09:57.650
+13:1 Lombard Street.
+
+09:57.730 --> 10:02.410
+It includes the state the zip code and the country which I didn't even provide in the address queery
+
+10:02.950 --> 10:03.430
+down below.
+
+10:03.430 --> 10:06.370
+Well we have what we really came for in geometry.
+
+10:06.460 --> 10:10.990
+We have location and this includes the latitude and longitude data.
+
+10:11.020 --> 10:16.390
+Now what we got back from the Google Maps API request is nothing more than some Jason data which means
+
+10:16.390 --> 10:21.760
+we can take that Jason data convert it to a javascript object and start accessing these properties in
+
+10:21.820 --> 10:22.960
+our code.
+
+10:22.960 --> 10:29.050
+To do this we're going to use a third party module that lets you make these HTP requests inside of your
+
+10:29.050 --> 10:29.530
+app.
+
+10:29.650 --> 10:31.930
+This one is called request.
+
+10:31.990 --> 10:43.790
+You can visit it by going to and PM J.S. dot com forward slash package forward slash request when you
+
+10:43.790 --> 10:48.920
+visit that page you're going to see all the documentation all the different ways you can use the request
+
+10:48.920 --> 10:51.710
+package to make your HTP requests.
+
+10:51.710 --> 10:56.540
+For now though we're going to stick with some basic examples down below on the right hand side you can
+
+10:56.540 --> 10:59.180
+see this is a super popular package.
+
+10:59.180 --> 11:03.980
+It has several hundred thousand downloads in the last day which is pretty ridiculous.
+
+11:04.280 --> 11:08.960
+In order to get started we're going to install it inside of our project and we're going to make a request
+
+11:09.020 --> 11:12.560
+to this exact you are out to do this.
+
+11:12.560 --> 11:19.700
+Let's go to the terminal first and install the module using PM in it first to create that package.
+
+11:19.730 --> 11:27.800
+Jason bille I'm going to run NPM in it and use enter to use the defaults for every single option at
+
+11:27.800 --> 11:30.560
+the end I'll type yes and hit enter again.
+
+11:30.650 --> 11:38.410
+Now that we have our package Jason File we can use NPM install followed by the module name request and
+
+11:38.410 --> 11:40.310
+I am going to specify a version.
+
+11:40.330 --> 11:45.970
+You can always find the latest version of modules on and the NPM page if you scroll down here you can
+
+11:45.970 --> 11:49.450
+see two point seventy three point zero is the latest version.
+
+11:49.480 --> 11:54.970
+At the current time that I'm filming so I'm going to go ahead and add that at two point seventy three
+
+11:55.390 --> 11:56.800
+point zero.
+
+11:56.800 --> 12:01.640
+Then I can specify the save flag because I do want to save this module in my package.
+
+12:01.660 --> 12:02.850
+Jason File.
+
+12:02.890 --> 12:07.930
+It's going to be critical for running the weather application and now that we have the request module
+
+12:07.930 --> 12:11.830
+installed we can go ahead and start using it over inside of our home.
+
+12:11.830 --> 12:16.630
+We're going to wrap this video up by making a request to that you are now in a new file in the root
+
+12:16.630 --> 12:18.250
+of the project called app.
+
+12:18.510 --> 12:23.950
+Yes this is going to be the starting point for the weather application the weather app is going to be
+
+12:23.950 --> 12:29.380
+the last command line as we create in the future we'll be making the backend for web apps as well as
+
+12:29.380 --> 12:31.520
+real time apps using socket IO.
+
+12:31.610 --> 12:36.330
+But to illustrate asynchronous programming a command line app is the nicest way to go.
+
+12:36.460 --> 12:41.410
+Here we have our out file and we can get started by loading in request just like we did with our other
+
+12:41.480 --> 12:43.220
+NPM modules.
+
+12:43.270 --> 12:45.220
+I'm going to make a constant variable.
+
+12:45.280 --> 12:54.390
+I'm going to call it request and I'm going to set it equal to require request perfect.
+
+12:54.420 --> 12:56.490
+Nothing here should look new.
+
+12:56.520 --> 12:59.940
+Now what we need to do is make a request in order to do this.
+
+13:00.000 --> 13:02.580
+We're going to have to call this request function.
+
+13:02.880 --> 13:07.780
+Let's go ahead and call it on line 3 request and it takes two arguments.
+
+13:07.860 --> 13:12.370
+The first argument is going to be an options object where we can configure all sorts of information.
+
+13:12.390 --> 13:13.950
+We'll use that in just a second.
+
+13:13.980 --> 13:16.520
+The second one is going to be a callback function.
+
+13:16.530 --> 13:21.140
+This is going to get called once that data comes back from the HTP endpoint.
+
+13:21.240 --> 13:26.700
+In our case it's going to get called once that Jason data the data right here comes back into the node
+
+13:26.880 --> 13:29.290
+application back inside of atom.
+
+13:29.400 --> 13:33.290
+We can add the arguments that are going to get passed back from request.
+
+13:33.300 --> 13:36.510
+Now these are arguments that are outlined in the requested documentation.
+
+13:36.510 --> 13:39.900
+I'm not making up the names for these here in the docs.
+
+13:39.900 --> 13:43.360
+You can see they call it error response and body.
+
+13:43.380 --> 13:52.170
+That's exactly what we're going to call ours back inside an atom we can add air response and body just
+
+13:52.170 --> 13:54.030
+like they do now.
+
+13:54.030 --> 13:56.990
+From here we can go ahead and fill out that options object.
+
+13:57.010 --> 14:00.840
+This is where we are going to specify the things unique to our request.
+
+14:00.990 --> 14:01.730
+In this case.
+
+14:01.770 --> 14:07.870
+One of the unique things is the you are Al that you are Al specifies exactly what you want to request.
+
+14:07.880 --> 14:10.230
+And in our case we have that in the browser.
+
+14:10.400 --> 14:12.010
+Let's go ahead and copy that.
+
+14:12.100 --> 14:18.300
+Well exactly as it appears pasting it inside of the string you are Al property.
+
+14:18.470 --> 14:23.450
+Now that we have the U R L property in place we can Atacama at the very end and hit enter because we
+
+14:23.450 --> 14:25.910
+are going to specify one more property.
+
+14:25.910 --> 14:31.550
+We're going to set Jason equal to true and this tells request that the data coming back is going to
+
+14:31.550 --> 14:36.980
+be Jason data and it should go ahead and take that Jason string and convert it to an object for us that
+
+14:36.980 --> 14:38.330
+lets us skip a step.
+
+14:38.330 --> 14:39.910
+It's a really useful option.
+
+14:40.220 --> 14:45.270
+With this in place we can now do something in the callback in the future we'll be taking this long to
+
+14:45.360 --> 14:47.310
+and latitude and fetching weather.
+
+14:47.330 --> 14:55.020
+For now we're simply going to print the body to the screen console dialog printing body right here.
+
+14:55.100 --> 14:58.190
+I'm going to pass the body argument into console that lot.
+
+14:58.460 --> 15:04.310
+Now that we have our very first HTP request set up and we have a callback that's going to fire when
+
+15:04.310 --> 15:09.380
+the data comes back we can run it from the terminal to do this like you might expect.
+
+15:09.440 --> 15:10.750
+We're going to use node.
+
+15:11.180 --> 15:14.720
+And we're going to run that app Jasc file when we do this.
+
+15:14.780 --> 15:19.520
+The file is going to start executing and there's going to be a really short delay before the body prints
+
+15:19.520 --> 15:20.420
+to the screen.
+
+15:20.420 --> 15:25.400
+As you saw it really wasn't that long maybe a fifth of a second maybe even less.
+
+15:25.400 --> 15:28.700
+And when we get back is exactly what we saw in the browser.
+
+15:28.700 --> 15:32.080
+Some of the properties like address components show object.
+
+15:32.090 --> 15:36.380
+In this case because we're printing it to the screen but those properties do indeed exist.
+
+15:36.380 --> 15:38.580
+We'll talk about how to get them a little later.
+
+15:38.600 --> 15:41.410
+For now though we do have our formatted address right here.
+
+15:41.420 --> 15:45.200
+We also have the geometry object a place id and types.
+
+15:45.230 --> 15:50.870
+This is what we're going to be using to fetch the long 8:58 latitude and later to fetch the weather
+
+15:51.050 --> 15:52.000
+data.
+
+15:52.130 --> 15:56.950
+Now that we have this in place we are done we have the first step of the process complete.
+
+15:56.960 --> 16:01.970
+We've made a request to the Google geolocation API and we're getting the data back.
+
+16:01.970 --> 16:04.930
+We'll continue on creating the weather app and the next video.
+
+16:04.940 --> 16:07.820
+I am super excited to get started building it out.
+
+16:07.880 --> 16:08.840
+So stay tuned.
+
+16:08.840 --> 16:10.490
+I will see you soon.

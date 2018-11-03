@@ -1,0 +1,778 @@
+WEBVTT
+
+00:00.270 --> 00:04.950
+In this video you're going to take the code we have here that we created in the last video and break
+
+00:04.950 --> 00:10.560
+it out into its own file similar to what we did with the geocoding API request where we call G.O. code
+
+00:10.590 --> 00:13.970
+address instead of actually having the request call in out.
+
+00:14.010 --> 00:18.780
+Yes that means we're going to make a new folder a new file and we'll create a function in there that
+
+00:18.780 --> 00:20.220
+gets exported.
+
+00:20.220 --> 00:24.360
+After that we're going to go ahead and learn how to chain callbacks together.
+
+00:24.390 --> 00:29.040
+So when we get that address from the terminal we can convert that into coordinates and we can take those
+
+00:29.040 --> 00:34.560
+coordinates and convert them into temperature information or whatever weather data we want to pull off
+
+00:34.590 --> 00:38.010
+of the return result from the forecast API.
+
+00:38.340 --> 00:42.750
+Now before we can dive into any of that I'm going to go ahead and create that brand new file and we'll
+
+00:42.750 --> 00:45.610
+worry about getting this code into that function.
+
+00:45.660 --> 00:50.880
+Then there's going to be a challenge will you'll be responsible for creating that callback before we
+
+00:50.880 --> 00:51.870
+dive into any of that.
+
+00:51.900 --> 00:53.550
+So let's go ahead and make the directory
+
+00:56.830 --> 00:59.370
+the directory is going to be called the weather.
+
+00:59.670 --> 01:04.320
+And in the weather directory we'll make a new file called weather.
+
+01:04.450 --> 01:05.300
+Yes.
+
+01:05.420 --> 01:06.300
+Awesome.
+
+01:06.320 --> 01:09.740
+Now in here we can take all of the code from apt.
+
+01:09.770 --> 01:10.630
+Yes.
+
+01:10.810 --> 01:13.300
+Cut it out and paste it.
+
+01:13.330 --> 01:17.470
+The only thing we need to do in order to take this and convert it to what we actually need is to create
+
+01:17.470 --> 01:21.030
+that function that's going to get exported and then we can move our call through request.
+
+01:21.040 --> 01:27.480
+Inside of it I'm going to make a brand new function called Get weather good weather is going to take
+
+01:27.480 --> 01:29.580
+some arguments but that will be part of the challenge.
+
+01:29.580 --> 01:33.340
+For now I'm going to leave the arguments list empty and down below.
+
+01:33.390 --> 01:37.390
+I'm going to take our call to request and move it inside from here.
+
+01:37.470 --> 01:45.540
+We can go ahead and export this get weather function module DOD exports datt get weather is going to
+
+01:45.540 --> 01:49.890
+get set equal to the get weather function that we defined up above.
+
+01:49.890 --> 01:55.270
+Now that we have this in place we can go ahead and move into opt out just to add some stuff here.
+
+01:55.290 --> 01:59.880
+The first thing I'm going to do is remove the API key we no longer need that and I'm going to highlight
+
+01:59.880 --> 02:06.580
+all of the commented code and uncommented using command forward slash awesome.
+
+02:06.600 --> 02:12.480
+Now in order to go ahead and set this challenge up I am going to import the file creating a to call
+
+02:12.480 --> 02:18.540
+the weather and setting it equal to the require return result.
+
+02:18.540 --> 02:23.250
+In this case we're requiring that brand new file which is created We're going to provide a relative
+
+02:23.250 --> 02:27.870
+path forward slash because we're loading in a file that we wrote and then we're going to provide the
+
+02:27.870 --> 02:33.750
+directory name whether followed by the file name whether dot G S And We can leave off that Jeff's extension
+
+02:33.780 --> 02:35.140
+as we already know.
+
+02:35.400 --> 02:39.450
+Now that we have the weather API loaded in down below we can go ahead and call it.
+
+02:39.600 --> 02:45.060
+I'm going to comment out our call to G-code address real quick and down below we're going to go ahead
+
+02:45.090 --> 02:46.520
+and run weather.
+
+02:46.740 --> 02:52.130
+Dot get weather now as I mentioned there will be arguments in the future.
+
+02:52.130 --> 02:56.970
+For now we're going to go ahead and leave them empty and we can run our file from the terminal.
+
+02:56.990 --> 03:02.180
+This means we should see the weather printing for whatever coordinates you hardcoded in the previous
+
+03:02.180 --> 03:02.920
+video.
+
+03:02.920 --> 03:05.450
+In this case those coordinates are for Philadelphia.
+
+03:05.570 --> 03:10.130
+So I'm going to go ahead and run it note amped up Jap's with no address argument.
+
+03:10.190 --> 03:12.490
+Actually I am going to need to provide an address.
+
+03:12.500 --> 03:17.140
+Since I haven't commented out the yard's code so I'll go ahead and do that address.
+
+03:17.150 --> 03:18.580
+And this is just a dummy address.
+
+03:18.590 --> 03:22.350
+I'm going to use a zip code in New Jersey from here.
+
+03:22.560 --> 03:25.860
+If the geolocation code is never running because that is commented out.
+
+03:25.960 --> 03:30.940
+But we are running in the weather code that got moved to the new file and we are indeed seeing a temperature
+
+03:31.000 --> 03:36.400
+eighty point five two degrees which means that the code is properly getting executed over in the new
+
+03:36.400 --> 03:37.330
+file.
+
+03:37.330 --> 03:42.970
+Now your challenge for this video is going to be to take the weather function get weather and make it
+
+03:42.970 --> 03:45.970
+similar to the Geo code address function.
+
+03:46.180 --> 03:49.960
+And that means we're going to need to pass in some arguments including a callback function.
+
+03:49.960 --> 03:55.630
+And over here we're going to need to use those arguments instead of a static lat long pair.
+
+03:55.750 --> 04:00.460
+And we're also going to need to call the callback instead of using console Lague.
+
+04:00.460 --> 04:02.820
+So let's break down what those arguments are going to be.
+
+04:02.890 --> 04:05.010
+I'm going to leave a little comment right here.
+
+04:05.020 --> 04:07.990
+First up you're going to want to pass in the latitude for now.
+
+04:07.990 --> 04:16.540
+What I'd like you to do is take these static data like this number copy it and just paste it right inside
+
+04:16.540 --> 04:22.650
+of the arguments list and you can do the same thing for longitude then you're going to go ahead and
+
+04:22.650 --> 04:25.800
+provide a callback function and that callback function.
+
+04:25.800 --> 04:30.390
+It's going to take the same two arguments that the geocoder Address function takes right here error
+
+04:30.390 --> 04:35.970
+message and results the error message is going to be a string you can print to the screen and the result
+
+04:35.970 --> 04:39.580
+is going to contain the weather which we also want to print to the screen.
+
+04:39.600 --> 04:44.430
+Now once you have those three arguments set up here and you have your if statements that print the appropriate
+
+04:44.430 --> 04:49.470
+data you can go ahead and actually make those changes to whether Don Jats you're going to want to take
+
+04:49.470 --> 04:54.300
+the latitude and longitude arguments and use those inside of the you are Al you can go ahead and use
+
+04:54.300 --> 04:57.690
+template Shearing's to do that which we've already used heavily in the course.
+
+04:57.720 --> 05:00.630
+And then you need to use that callback function.
+
+05:00.840 --> 05:04.980
+In this case you're going to provide an error message argument and no results argument.
+
+05:04.980 --> 05:07.100
+Same for this one down below.
+
+05:07.140 --> 05:09.830
+Instead of calling console log you're going to call the callback.
+
+05:09.960 --> 05:14.160
+This time though you're going to provide undefined for the error message because in this case there
+
+05:14.160 --> 05:15.320
+is no error.
+
+05:15.330 --> 05:18.150
+Instead you're going to provide the results object.
+
+05:18.150 --> 05:22.890
+Now I'd like you to print the temperature and the actual temperature Propertius that's going to let
+
+05:22.890 --> 05:29.900
+us print a message like it is 56 in Philadelphia but it feels like 61 something along those lines.
+
+05:29.940 --> 05:34.290
+You can explore all of the properties available and add any you like to the message but those are the
+
+05:34.290 --> 05:37.920
+two I really want the temperature and the actual temperature.
+
+05:37.920 --> 05:42.910
+Now that means you are going to print the object it to the screen over an x J s like we do here.
+
+05:42.990 --> 05:46.660
+There is no need to actually print the formatted string just yet.
+
+05:46.740 --> 05:49.510
+We'll worry about that once we integrate the entire app.
+
+05:49.530 --> 05:51.180
+So take a moment to knock that out.
+
+05:51.180 --> 05:52.640
+Add the three arguments here.
+
+05:52.680 --> 05:55.560
+This is where the council calls are going to happen like they do above.
+
+05:55.620 --> 06:00.280
+And in whether not just as you're going to remove all the council calls replacing them with callback
+
+06:00.300 --> 06:05.070
+calls and you're going to remove the static long to toot and latitude pairs.
+
+06:05.220 --> 06:06.570
+Take a moment to pause the video.
+
+06:06.570 --> 06:07.380
+Knock that out.
+
+06:07.380 --> 06:09.080
+Test it from the terminal.
+
+06:09.120 --> 06:13.650
+Make sure you get the same data because you should be using the same static coordinates and when you're
+
+06:13.650 --> 06:15.500
+done go ahead and click play.
+
+06:15.520 --> 06:20.730
+Note the temperature might go up or down by a few degrees depending on what time of day you're watching
+
+06:20.790 --> 06:21.470
+the video.
+
+06:24.660 --> 06:25.580
+How do you do.
+
+06:25.590 --> 06:29.970
+Hopefully you're able to wire up those arguments as well as the callback.
+
+06:29.970 --> 06:35.040
+Now the first thing I'm going to do before I actually change the weather just code is change the amp
+
+06:35.250 --> 06:35.800
+code.
+
+06:35.880 --> 06:40.200
+I'm going to pass in the other two arguments the next one is going to be the other part of our coordinate
+
+06:40.200 --> 06:40.890
+pair.
+
+06:40.980 --> 06:46.320
+I'm going to grab that from the you I'll copy it and paste it over inside of Apple just as the second
+
+06:46.380 --> 06:47.160
+argument.
+
+06:47.160 --> 06:51.050
+Then I can go ahead and provide the third one which is going to be the callback function.
+
+06:51.060 --> 06:55.440
+This function is going to get fired once the weather data comes back from the API.
+
+06:57.160 --> 07:00.940
+I'm going to use an arrow function that's going to get those two arguments we discussed earlier.
+
+07:00.940 --> 07:01.810
+Error message
+
+07:05.300 --> 07:10.340
+and results the results containing any sort of temperature information we want in this case it could
+
+07:10.340 --> 07:12.470
+be the temperature and the actual temperature.
+
+07:12.560 --> 07:17.270
+Although you might have included others I'm going to change results to weather results and I'll talk
+
+07:17.270 --> 07:18.590
+about why in a second.
+
+07:18.770 --> 07:24.700
+Long story short I want to differentiate weather results from the results variable up in geocoder address.
+
+07:24.710 --> 07:29.030
+Now obviously I did not mention this when I gave you the challenge so you can go ahead and just change
+
+07:29.080 --> 07:32.080
+them inside of get whether we now need to use if.
+
+07:32.080 --> 07:36.770
+Else statements in order to print the appropriate thing to the screen depending on whether or not the
+
+07:36.770 --> 07:38.310
+error message exists.
+
+07:38.330 --> 07:44.980
+If there is an error message we do want to go ahead and print it using console log.
+
+07:46.220 --> 07:52.160
+In this case we're just going to pass any error message variable.
+
+07:52.200 --> 07:57.060
+Now if there is no error message we're going to go ahead and use the weather results object will be
+
+07:57.060 --> 07:59.640
+printing a nice formatted message a little bit later.
+
+07:59.650 --> 08:04.650
+For now we can simply print the weather results object using that pretty printing technique we talked
+
+08:04.650 --> 08:10.350
+about where we call Jason docstring a FI inside of console that lock here.
+
+08:10.380 --> 08:12.240
+I'm going to provide those three arguments.
+
+08:12.300 --> 08:20.140
+The actual object whether it results undefined for our filtering function and a number for our indentation
+
+08:20.440 --> 08:20.960
+in this case.
+
+08:20.980 --> 08:21.870
+I'm going to go with two.
+
+08:21.910 --> 08:27.400
+Once again and now that we have our weather call getting called with all three arguments we can go ahead
+
+08:27.400 --> 08:30.610
+and actually implement this inside of weather.
+
+08:30.700 --> 08:31.410
+Yes.
+
+08:31.520 --> 08:32.290
+To get started.
+
+08:32.410 --> 08:40.030
+I'm going to make the L right here dynamic which means I need to replace the strings with template strings.
+
+08:40.040 --> 08:40.860
+Very cool.
+
+08:41.030 --> 08:46.460
+Now that I have template strings in place I can inject those arguments latitude and longitude right
+
+08:46.540 --> 08:48.050
+in to the you are out.
+
+08:48.290 --> 08:51.050
+Let's go ahead and define all the arguments that are getting passed in.
+
+08:51.050 --> 08:56.370
+We had the last the long and our callback first aquil to inject that latitude.
+
+08:56.450 --> 09:02.450
+I'm going to take the thirty nine point nine three remove it and between the forward slash and the comma
+
+09:02.480 --> 09:07.730
+I'm going to inject it using dollar with our curly braces which lets us inject a value into our template
+
+09:07.730 --> 09:08.240
+string.
+
+09:08.330 --> 09:14.580
+In this case let And we can do the exact same thing right after the comma with the law intituled I'm
+
+09:14.580 --> 09:20.660
+going to remove these static long to use of the dollar sign with our curly braces to inject the variable
+
+09:20.720 --> 09:22.120
+into the string.
+
+09:22.250 --> 09:27.300
+Now that you are l is dynamic the last thing we need to do inside of get whether is change or cancel
+
+09:27.310 --> 09:29.900
+log calls to callback calls.
+
+09:29.960 --> 09:35.750
+And now for the first two console log calls we can actually replace console dialog with callback.
+
+09:36.020 --> 09:40.700
+And this is going to line up with the arguments that we specified over an app out G-S where the first
+
+09:40.700 --> 09:43.610
+one is the error message and the second one is the weather results.
+
+09:43.610 --> 09:48.230
+In this case we're passing the error message back and the second argument is undefined which it should
+
+09:48.230 --> 09:48.690
+be.
+
+09:48.770 --> 09:56.630
+We can do the same thing right here for unable to fetch whether now the third console call is going
+
+09:56.630 --> 09:58.270
+to be a little more complex.
+
+09:58.310 --> 10:02.900
+We're going to have to actually create an object instead of just passing the temperature back.
+
+10:02.960 --> 10:07.550
+I am going to call the call back with the first argument being undefined because in this case there
+
+10:07.550 --> 10:09.020
+is no error message.
+
+10:09.020 --> 10:12.640
+Instead we're going to provide that whether results object.
+
+10:12.800 --> 10:17.630
+Right here we can define all the temperature properties we like in this case I am going to define temperature
+
+10:19.400 --> 10:29.040
+setting and equal to body ADOT currently which stores all of the current weather data temperature awesome.
+
+10:29.170 --> 10:32.820
+Now that we have the temperature what I am missing the dot right here.
+
+10:32.950 --> 10:37.330
+We can go ahead and provide that second property to the object which is actual temperature.
+
+10:37.330 --> 10:42.310
+Actual temperature is going to account for things like humidity wind speed and other weather conditions.
+
+10:42.310 --> 10:47.980
+The actual temperature data is available under a property on currently called apparent temperature.
+
+10:48.040 --> 10:50.010
+I'm going to go ahead and provide that right here.
+
+10:53.750 --> 10:58.830
+And as the value we're going to use the same thing this is going to be body data currently.
+
+10:58.940 --> 11:03.290
+This gets us to the currently object just like we do for temperature and then we can provide a parent's
+
+11:03.320 --> 11:03.850
+temperature
+
+11:07.310 --> 11:07.940
+awesome.
+
+11:08.090 --> 11:13.420
+Now we have two properties so we can go ahead and remove that council lock statement at a semi-colon
+
+11:13.440 --> 11:16.660
+and now we can go ahead and run the app because everything is done.
+
+11:16.670 --> 11:19.690
+We have our get weather function wired up both inside of the weather.
+
+11:19.730 --> 11:22.540
+Just file and inside of actually yes.
+
+11:22.550 --> 11:27.200
+Now once again we are still using static coordinates but this would be the last time we run the file
+
+11:27.200 --> 11:28.640
+with that static data.
+
+11:29.340 --> 11:36.260
+From the terminal I'm going to rerun the application and right here we get our temperature object printing
+
+11:36.260 --> 11:37.140
+to the screen.
+
+11:37.190 --> 11:42.110
+We have our temperature property eighty 1.6 one and we have the apparent temperature which is already
+
+11:42.110 --> 11:48.230
+at 87 degrees and this early in the morning with this in place we're now ready to learn how to chain
+
+11:48.290 --> 11:49.850
+our callbacks together.
+
+11:49.880 --> 11:51.370
+That means in.
+
+11:51.440 --> 11:57.020
+Yes we're going to take the results that come back from geocoder address pass them in to get weather
+
+11:57.020 --> 12:02.390
+and use that to print dynamic weather for whatever address you provide over here in the terminal in
+
+12:02.390 --> 12:03.010
+this case.
+
+12:03.110 --> 12:08.420
+I would get the address for the town in New Jersey as opposed to the static address which I'm using
+
+12:08.420 --> 12:12.740
+right now that latitude longitude pair is for Philadelphia to get started.
+
+12:12.740 --> 12:18.680
+We have to take our get weather call and actually move it inside of the callback function for geocoder
+
+12:18.680 --> 12:24.140
+address because inside this callback function is the only place we have access to the latitude and longitude
+
+12:24.140 --> 12:25.190
+pairs.
+
+12:25.190 --> 12:30.470
+Now if I open the geocoder Jeff's file you can remember that we get the formatted address back as the
+
+12:30.470 --> 12:36.490
+address property we get the latitude back as latitude and longitude back as long itude.
+
+12:36.610 --> 12:39.140
+I'm going to go ahead and start wiring this up.
+
+12:39.140 --> 12:44.690
+First up we do need to remove the comments here and I'm going to go ahead and take the console log statement
+
+12:44.720 --> 12:49.790
+in the success case and remove it replacing it with a console log call that's going to go ahead and
+
+12:49.790 --> 12:53.160
+print the formatted address right here.
+
+12:53.570 --> 13:00.740
+Console log printing results dot address.
+
+13:00.810 --> 13:05.610
+This is going to print the address to the screen so we know exactly what address we're getting weather
+
+13:05.670 --> 13:11.040
+data for now that we have our console log printing the address that we can go ahead and take the get
+
+13:11.040 --> 13:12.840
+weather call.
+
+13:12.840 --> 13:16.380
+Cut it out and move it right below that line.
+
+13:16.380 --> 13:21.980
+And with this in place we're now really really close to actually checking the two callbacks together.
+
+13:22.080 --> 13:27.150
+All that's left to do is take these static coordinates and replace them with the dynamic ones which
+
+13:27.150 --> 13:29.510
+are going to be available in that results object.
+
+13:29.610 --> 13:31.570
+The first argument is going to be results.
+
+13:31.590 --> 13:39.680
+Latitude which we define right here on the object and the second one is going to be results long into
+
+13:41.240 --> 13:42.830
+awesome and that's it.
+
+13:42.890 --> 13:48.290
+This is all we need to do to take the data from geocoder code address and pass it in to get whether
+
+13:48.530 --> 13:53.810
+this is going to create an application that prints our dynamic whether the whether for the address in
+
+13:53.810 --> 13:54.580
+the terminal.
+
+13:54.590 --> 13:59.750
+Now before we go ahead and run this I am going to replace the object call with a nicer and more formatted
+
+13:59.750 --> 14:00.390
+one.
+
+14:00.440 --> 14:04.430
+We're going to take both of the pieces of information the temperature and the apparent temperature and
+
+14:04.430 --> 14:05.700
+use them in that string.
+
+14:05.840 --> 14:11.140
+Which means that we can remove this console log replacing it with a different one console log.
+
+14:11.330 --> 14:19.880
+And I am going to use template strings since I plan to inject a few variables in it's currently followed
+
+14:19.880 --> 14:20.720
+by the temperature.
+
+14:20.900 --> 14:24.150
+I'm going to go ahead and inject that using weather results.
+
+14:25.380 --> 14:29.260
+Data temperature awesome.
+
+14:29.300 --> 14:36.030
+And then I can go ahead and put a period and say something along the lines of It feels like followed
+
+14:36.030 --> 14:43.400
+by the apparent temperature which I'm going to inject using weather results dot apparent temperature
+
+14:47.800 --> 14:51.420
+I'm going to go ahead and put a period after that and we are done.
+
+14:51.490 --> 14:55.720
+We don't have a council that live statement that prints the weather to the screen.
+
+14:55.720 --> 15:00.940
+We also have one that prints the address to the screen and we have air handlers for both geocoder address
+
+15:00.970 --> 15:02.210
+and get weather.
+
+15:02.230 --> 15:06.000
+Let's go ahead and test this by rerunning the previous command.
+
+15:06.040 --> 15:10.040
+I'm going to go ahead and use that same zip code 0 8 8 2 2.
+
+15:10.270 --> 15:15.340
+When I run it I get Flemington New Jersey has the formatted address where it currently is.
+
+15:15.370 --> 15:21.950
+Eighty one point five six but it feels like eighty five point five seven that attest that this is working.
+
+15:21.970 --> 15:29.170
+I'm going to go ahead and type in something else inside of quotes something like Key West Florida.
+
+15:29.440 --> 15:34.540
+And when I run this command I do indeed get Key West Florida right here as the formatted address where
+
+15:34.540 --> 15:41.340
+it's currently 80 4.1 7 but it feels like ninety four point two degrees with this in place.
+
+15:41.350 --> 15:43.480
+The weather application is now wired up.
+
+15:43.570 --> 15:49.300
+We take the address we get the lat long pair using the Google geocoder API then we use our forecast
+
+15:49.300 --> 15:54.120
+API to take that lat long pair and convert it into temperature information.
+
+15:54.190 --> 15:56.180
+With this in place we're done for this video.
+
+15:56.260 --> 15:58.920
+Let's take a quick moment to recap what we did.
+
+15:58.930 --> 16:02.670
+First up we took that request call that was originally an apt.
+
+16:02.750 --> 16:04.730
+And we moved it into weather.
+
+16:04.820 --> 16:06.710
+Yes defining it right here.
+
+16:06.730 --> 16:12.130
+We used a callback to pass the data from weather data I guess into ever file happened to call it.
+
+16:12.190 --> 16:13.850
+In this case that came from Apple.
+
+16:13.930 --> 16:14.430
+Yes.
+
+16:14.440 --> 16:17.240
+Where we imported weather up above down below.
+
+16:17.410 --> 16:23.470
+Inside of the callback for geocoder address we call get weather and we only call get weather in the
+
+16:23.470 --> 16:26.470
+success case if geocoder address goes bad.
+
+16:26.530 --> 16:30.880
+We obviously are not going to have the lat long pair and we're not going to want to take that information
+
+16:30.880 --> 16:36.040
+and pass it to get weather because to get weather call would fail it needs the lat long in order to
+
+16:36.040 --> 16:37.120
+work.
+
+16:37.120 --> 16:42.250
+Now this is working great because of the Get weather call sits right here and inside of that callback
+
+16:42.280 --> 16:45.450
+we print the weather specific information to the screen.
+
+16:45.490 --> 16:48.330
+This is either an error message related to the weather API.
+
+16:48.430 --> 16:53.020
+Maybe you have bad coordinate information or maybe you don't have internet access on your machine.
+
+16:53.110 --> 16:57.330
+And then in the success case we go ahead and print the formatted message to the screen.
+
+16:57.340 --> 17:01.660
+This is all done using callback functions and that is it for this video.
+
+17:01.670 --> 17:06.850
+I'll see you next time where we're going to talk about a different way we can synchronize our asynchronous
+
+17:06.850 --> 17:09.640
+code using E.S. six promises.
+
+17:09.640 --> 17:10.340
+Stay tuned.
+
+17:10.410 --> 17:11.680
+I will see you then

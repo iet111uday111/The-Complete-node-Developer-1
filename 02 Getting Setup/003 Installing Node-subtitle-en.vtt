@@ -1,0 +1,250 @@
+WEBVTT
+
+00:00.560 --> 00:03.990
+It before we started talking about what note is and why it's useful.
+
+00:04.010 --> 00:05.850
+Which I'm sure you are wondering.
+
+00:05.940 --> 00:10.940
+We're going to go ahead and install node on your machine because in the next couple of videos as I aim
+
+00:10.940 --> 00:17.390
+to answer those questions we're going to want to run a little bit of node code now to get started in
+
+00:17.390 --> 00:20.330
+this video we just need two programs a browser.
+
+00:20.330 --> 00:24.070
+I'm going to be using Chrome throughout the course but any browser will do.
+
+00:24.140 --> 00:31.640
+And in the terminal sometimes known as the command line on Linux or the command prompt on Windows.
+
+00:31.730 --> 00:34.110
+Let's go ahead and open that up right now.
+
+00:34.430 --> 00:41.240
+I'm going to use Spotlight to open up the terminal which is what it's known as on my operating system.
+
+00:41.240 --> 00:45.860
+If you're on Windows look for something like the command prompt you can search using the Windows key
+
+00:45.860 --> 00:47.110
+and then by typing.
+
+00:47.210 --> 00:50.470
+And on Linux you're looking for something called the command line.
+
+00:50.660 --> 00:55.910
+Although depending on your distribution it might be called the terminal or command prompt.
+
+00:55.910 --> 00:59.670
+Now once you have that program open you're going to see something a little daunting.
+
+00:59.720 --> 01:00.580
+It's a screen.
+
+01:00.620 --> 01:04.260
+Yours probably has a black background with white text.
+
+01:04.400 --> 01:07.970
+And essentially it's waiting for you to run a command.
+
+01:08.000 --> 01:12.230
+We're going to be running quite a few commands from the terminal throughout the course and then around
+
+01:12.230 --> 01:13.510
+four or five videos.
+
+01:13.520 --> 01:15.220
+I'm going to give you a crash course.
+
+01:15.260 --> 01:19.410
+So if you've never used this before you can start navigating comfortably.
+
+01:19.670 --> 01:22.650
+But for now you don't need to worry about any of that.
+
+01:22.730 --> 01:26.210
+We're not going to run any commands for the moment in the browser.
+
+01:26.210 --> 01:32.780
+We can head over to node j as dot org to grab the installer for the latest version of node and this
+
+01:32.780 --> 01:38.070
+course we're going to be using the most recent version of version 6 point 2.2.
+
+01:38.150 --> 01:42.270
+It is important that you install a v 6 version of Node.
+
+01:42.360 --> 01:47.650
+Yes it doesn't have to be a 2.2 it could be 1.0 but it is important.
+
+01:47.660 --> 01:54.890
+It's on that V-6 branch because there is a ton of new features that come along with it V-6 including
+
+01:55.160 --> 01:59.710
+all of the features you might have come to love in the browser or using iOS 6.
+
+01:59.720 --> 02:03.890
+This is the next version of javascript and it comes with a lot of great enhancements we're going to
+
+02:03.890 --> 02:08.530
+be using throughout the course this is Andrew from the future with a quick update.
+
+02:08.540 --> 02:14.090
+If you go over to node and J.S. dot org right now you're going to notice that things look a little different
+
+02:14.090 --> 02:16.990
+from what you're seeing in the video on the left hand side.
+
+02:17.000 --> 02:20.610
+We have these six in on the right hand side we have the eight.
+
+02:20.690 --> 02:23.710
+I recently updated this course to support the eight.
+
+02:23.750 --> 02:27.030
+So you can go ahead and download the latest version.
+
+02:27.050 --> 02:30.090
+For me it happens to be the 8. zero point zero.
+
+02:30.170 --> 02:35.930
+But if there are other versions out like the eight point 2.4 or something along those lines feel free
+
+02:35.930 --> 02:38.390
+to grab that as well.
+
+02:38.390 --> 02:43.760
+Now throughout the course you're not going to need a V-8 for most of the videos but near the end V8
+
+02:43.880 --> 02:44.920
+is going to be required.
+
+02:44.960 --> 02:47.670
+So I recommend just starting off with that right now.
+
+02:47.780 --> 02:48.350
+All right.
+
+02:48.350 --> 02:50.910
+Let's go ahead and get back in to the original video.
+
+02:52.420 --> 02:55.150
+For now though all we have to do is click this button.
+
+02:55.210 --> 02:58.540
+It downloads the installer and the installer is one of those basic.
+
+02:58.540 --> 03:00.710
+Click next a few times and you're done.
+
+03:00.730 --> 03:04.730
+Type of installers there's no need to run any fancy commands.
+
+03:04.780 --> 03:08.140
+I'm going to go ahead and start the installer here.
+
+03:08.170 --> 03:10.080
+It's just going to ask me a few questions.
+
+03:10.090 --> 03:14.310
+Go ahead and click next or continue through all of them.
+
+03:14.380 --> 03:19.840
+You might want to specify a custom and destination but if you don't know what that means and you don't
+
+03:19.840 --> 03:25.660
+usually do it when installing programs that go ahead and skip that step to here I can see I'm using
+
+03:25.660 --> 03:27.010
+just 47 megabytes.
+
+03:27.010 --> 03:28.260
+No problem.
+
+03:28.330 --> 03:33.970
+I'm going to go ahead and run in the installer by entering my password and once I enter my password
+
+03:34.120 --> 03:37.670
+it should really only take a couple of seconds to get node installed.
+
+03:37.690 --> 03:38.530
+And here you go.
+
+03:38.620 --> 03:44.050
+We have a message that says the installation was completed successfully which means we are good to go.
+
+03:44.140 --> 03:50.290
+And now that node has been installed successfully we can go ahead and verify that by running it from
+
+03:50.290 --> 03:52.730
+the terminal over inside of the terminal.
+
+03:52.750 --> 04:00.230
+I'm going to actually shut it down by going to quit terminal and open it up again.
+
+04:00.570 --> 04:06.420
+The reason I'm opening it up is because we've installed a new command and some terminals require a restart
+
+04:06.450 --> 04:09.190
+before it's going to be able to run that new command.
+
+04:09.270 --> 04:12.920
+In our case we've restarted things and we can run our brand new command.
+
+04:12.930 --> 04:19.500
+We're going to type it out just like this node space hyphen V.
+
+04:19.920 --> 04:24.840
+What we're doing here is we're running the node command and we're passing it what's called a flag.
+
+04:25.020 --> 04:29.890
+This is a hyphen sign followed by a letter could be a it could be J.
+
+04:30.030 --> 04:31.810
+Or in our case it's v.
+
+04:31.830 --> 04:35.520
+This is going to print the version of node currently installed.
+
+04:35.550 --> 04:36.760
+We might get an error.
+
+04:37.670 --> 04:43.340
+Like this if you try to run a command that doesn't exist like A.D SDF you'll see.
+
+04:43.340 --> 04:44.800
+Command not found.
+
+04:44.810 --> 04:49.910
+If you see that it usually means the node installer didn't work correctly or you haven't ran it in the
+
+04:49.910 --> 04:51.190
+first place.
+
+04:51.230 --> 04:57.230
+In our case though a running node with the V flag should result in a number in our case it's version
+
+04:57.290 --> 04:59.320
+six point two point two.
+
+04:59.330 --> 05:03.520
+Once again make sure that you have a V-6 version of node installed.
+
+05:03.620 --> 05:09.080
+Otherwise a lot of the videos throughout the course just aren't going to work if you do have node installed
+
+05:09.320 --> 05:12.710
+and you're seeing something like what I see here then you are done.
+
+05:12.740 --> 05:17.240
+I'll see you next time where we start exploring exactly what node is.
+
+05:17.240 --> 05:17.990
+Stay tuned.
+
+05:18.110 --> 05:19.630
+I will see you then.
